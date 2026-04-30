@@ -453,7 +453,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Comuníquese</span>
+            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Conózcanos</span>
             <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
               Contacto
             </h2>
@@ -493,7 +493,7 @@ export default function Home() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-medium text-gn-black mb-1">WhatsApp</h4>
+                      <h4 className="font-medium text-gn-black mb-1">Teléfono</h4>
                       <a href="https://wa.me/message/7BQRXOHREOF4L1" target="_blank" rel="noopener noreferrer" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
                         +54 9 11 5476 3721
                       </a>

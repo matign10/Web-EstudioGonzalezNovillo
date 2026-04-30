@@ -86,7 +86,7 @@ export default function Home() {
                 onClick={(e) => scrollToSection(e, '#contacto')}
                 className="inline-flex items-center justify-center bg-gn-white text-gn-black px-8 py-4 text-sm font-medium tracking-wide hover:bg-gn-gray hover:text-gn-white transition-all duration-300 cursor-pointer"
               >
-                Consulta Gratuita
+                Consultanos
               </a>
               <a
                 href="#areas"
@@ -424,9 +424,9 @@ export default function Home() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-medium text-gn-black mb-1">Teléfono</h4>
-                      <a href="tel:+123456789" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
-                        +123 456 789
+                      <h4 className="font-medium text-gn-black mb-1">WhatsApp</h4>
+                      <a href="https://wa.me/message/7BQRXOHREOF4L1" target="_blank" rel="noopener noreferrer" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
+                        +54 9 11 5476 3721
                       </a>
                     </div>
                   </div>

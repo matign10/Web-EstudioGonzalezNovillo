@@ -73,7 +73,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Representación legal de alta calidad con compromiso, empatía y excelencia profesional.
+              Mas de 20 anos trabajando en delitos complejos. Casos que involucran figuras del deporte, empresarios, inversores y familias.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4"
@@ -146,16 +146,16 @@ export default function Home() {
             <motion.div variants={fadeInUp}>
               <PracticeArea
                 title="Defensa Penal"
-                description="Defensa penal estratégica con enfoque en resultados y protección de sus derechos fundamentales."
+                description="Defensa penal estrategica con enfoque en resultados. Abordamos cada causa desde todos los angulos: penal, civil y societario."
                 icon={<Shield className="w-10 h-10 text-gn-black" />}
                 expandedContent={{
-                  description: "Ofrecemos una defensa penal robusta y profesional, garantizando el debido proceso y la protección de sus derechos fundamentales en todas las instancias.",
+                  description: "Mas de 20 anos trabajando en delitos complejos. Ofrecemos una defensa robusta y profesional, garantizando el debido proceso y la proteccion de sus derechos fundamentales.",
                   services: [
-                    "Defensa en juicios penales",
-                    "Recursos y apelaciones",
-                    "Delitos económicos",
-                    "Delitos contra la propiedad",
-                    "Asesoramiento preventivo"
+                    "Estafas y fraudes corporativos",
+                    "Extorsiones y sextorsion",
+                    "Calumnias e injurias",
+                    "Denuncias falsas",
+                    "Defensa reputacional y mediatica"
                   ]
                 }}
               />
@@ -316,8 +316,73 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Casos Emblematicos */}
+      <section className="py-24 md:py-32 bg-gn-white" id="casos">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Experiencia Comprobada</span>
+            <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
+              Casos Emblematicos
+            </h2>
+            <div className="section-divider" />
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {[
+              {
+                category: "Estafas Corporativas",
+                title: "Fraudes en Inversiones Inmobiliarias",
+                description: "Representacion de inversores afectados por esquemas fraudulentos. Recuperacion de activos y persecucion penal de responsables.",
+                highlight: "Casos de alta complejidad"
+              },
+              {
+                category: "Delitos contra el Honor",
+                title: "Calumnias e Injurias Mediaticas",
+                description: "Defensa del honor y la reputacion en casos de difamacion publica. Estrategias legales combinadas: penal, civil y mediatica.",
+                highlight: "Exposicion mediatica"
+              },
+              {
+                category: "Extorsiones",
+                title: "Sextorsion y Amenazas",
+                description: "Defensa integral ante extorsiones y amenazas. Proteccion de la victima, preservacion de evidencia y accion penal inmediata.",
+                highlight: "Intervencion urgente"
+              }
+            ].map((caso, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="group"
+              >
+                <div className="h-full bg-gn-white border border-gn-gray/20 p-8 transition-all duration-300 hover:border-gn-black hover:shadow-lg">
+                  <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4">
+                    {caso.category}
+                  </span>
+                  <h3 className="text-xl font-display text-gn-black mb-3">{caso.title}</h3>
+                  <p className="text-gn-gray leading-relaxed mb-4">{caso.description}</p>
+                  <div className="pt-4 border-t border-gn-gray/20">
+                    <span className="text-xs text-gn-gray uppercase tracking-widest">{caso.highlight}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Sobre Nosotros */}
-      <section className="py-24 md:py-32 bg-gn-white" id="sobre-nosotros">
+      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-gray/20" id="sobre-nosotros">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -362,13 +427,17 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <h3 className="text-2xl font-display text-gn-black mb-4">
-                Nuestra Misión
+                Quienes Somos
               </h3>
-              <p className="text-gn-gray mb-8 leading-relaxed">
-                Ofrecer asesoramiento y representación legal de alta calidad a quienes lo necesiten, asegurando que reciban la compensación y el apoyo que merecen. Nos comprometemos a luchar incansablemente por los derechos de nuestros clientes, actuando con profesionalismo, ética y dedicación siempre.
+              <p className="text-gn-gray mb-6 leading-relaxed">
+                Somos un estudio juridico con mas de 20 anos de experiencia trabajando en delitos complejos. Hemos representado a figuras del deporte, empresarios, inversores y familias en casos de alta exposicion mediatica.
               </p>
-
-
+              <p className="text-gn-gray mb-6 leading-relaxed">
+                Abordamos cada causa desde todos los angulos posibles: penal, civil, societario. No nos limitamos a una sola jurisdiccion ni a una sola estrategia. Buscamos la solucion mas efectiva para cada caso particular.
+              </p>
+              <p className="text-gn-gray leading-relaxed">
+                Nuestro enfoque es proactivo: no esperamos a que las cosas pasen, las anticipamos. Porque en derecho penal, el tiempo y la estrategia lo son todo.
+              </p>
             </motion.div>
           </div>
         </div>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronDown, Award, Users, Lightbulb, Heart, Scale, Briefcase, Shield, Linkedin, Zap, HandshakeIcon } from "lucide-react";
+import { ChevronDown, Scale, Briefcase, Shield, Linkedin } from "lucide-react";
 import BackgroundImage from "@/components/BackgroundVideo";
 import GoogleMap from "@/components/GoogleMap";
 import PracticeArea from "@/components/PracticeArea";
@@ -117,18 +117,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Values Banner */}
-      <section className="py-6 bg-gn-black border-y border-gn-gray/20">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            {['Compromiso', 'Empatía', 'Excelencia', 'Integridad', 'Resolución', 'Inmediatez'].map((value, i) => (
-              <span key={i} className="text-gn-gray text-xs tracking-widest uppercase">
-                {value}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Áreas de Práctica */}
       <section className="py-24 md:py-32 bg-gn-white" id="areas">
@@ -227,7 +216,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -239,28 +228,16 @@ export default function Home() {
                 role: "Director",
                 specialty: "Defensa Penal",
                 description: "Especialista en defensa penal estratégica. Brinda asesoramiento integral con amplia experiencia en litigios complejos.",
-                linkedin: "https://linkedin.com/in/matias-gonzalez-novillo"
+                linkedin: "https://linkedin.com/in/matias-gonzalez-novillo",
+                image: "/images/mati.jpg"
               },
               {
-                name: "Profesional 2",
+                name: "Jorge González Novillo",
                 role: "Abogado Senior",
                 specialty: "Derecho Civil",
-                description: "Descripción del segundo profesional.",
-                linkedin: "#"
-              },
-              {
-                name: "Profesional 3",
-                role: "Abogado",
-                specialty: "Derecho Laboral",
-                description: "Descripción del tercer profesional.",
-                linkedin: "#"
-              },
-              {
-                name: "Profesional 4",
-                role: "Abogado",
-                specialty: "Derecho Comercial",
-                description: "Descripción del cuarto profesional.",
-                linkedin: "#"
+                description: "Abogado con amplia trayectoria en derecho civil y comercial. Especialista en negociaciones y resolución de conflictos.",
+                linkedin: "#",
+                image: "/images/coco.jpg"
               }
             ].map((profesional, i) => (
               <motion.div
@@ -269,15 +246,16 @@ export default function Home() {
                 className="group"
               >
                 <div className="bg-gn-white border border-gn-gray/20 overflow-hidden transition-all duration-300 hover:border-gn-black">
-                  {/* Avatar container */}
-                  <div className="relative h-48 bg-gradient-to-br from-gn-white to-gn-gray/20 flex items-center justify-center overflow-hidden">
-                    <div className="w-24 h-24 bg-gn-black flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-12 h-12 text-gn-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
+                  {/* Photo container */}
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <Image
+                      src={profesional.image}
+                      alt={profesional.name}
+                      fill
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
                     {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-gn-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gn-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <a
                         href={profesional.linkedin}
                         target="_blank"
@@ -390,29 +368,7 @@ export default function Home() {
                 Ofrecer asesoramiento y representación legal de alta calidad a quienes lo necesiten, asegurando que reciban la compensación y el apoyo que merecen. Nos comprometemos a luchar incansablemente por los derechos de nuestros clientes, actuando con profesionalismo, ética y dedicación siempre.
               </p>
 
-              <h3 className="text-2xl font-display text-gn-black mb-6">Nuestros Valores</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { icon: HandshakeIcon, label: "Compromiso" },
-                  { icon: Heart, label: "Empatía" },
-                  { icon: Award, label: "Excelencia" },
-                  { icon: Shield, label: "Integridad" },
-                  { icon: Zap, label: "Resolución" },
-                  { icon: Lightbulb, label: "Inmediatez" }
-                ].map((valor, i) => (
-                  <motion.div
-                    key={i}
-                    className="flex items-center gap-3 p-4 border border-gn-gray/20 hover:border-gn-black transition-colors"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.1 }}
-                  >
-                    <valor.icon className="w-5 h-5 text-gn-black" />
-                    <span className="text-gn-black text-sm font-medium">{valor.label}</span>
-                  </motion.div>
-                ))}
-              </div>
+
             </motion.div>
           </div>
         </div>

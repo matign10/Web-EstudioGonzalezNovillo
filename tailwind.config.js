@@ -7,6 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        // Paleta del manual de marca GN
+        'gn-black': '#161616',
+        'gn-gray': '#9D9D9C',
+        'gn-white': '#F8F8F8',
+      },
+      fontFamily: {
+        'display': ['var(--font-display)', 'Georgia', 'serif'],
+        'sans': ['var(--font-poppins)', 'system-ui', 'sans-serif'],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

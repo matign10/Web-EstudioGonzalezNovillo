@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
 
 const navigation = [
   { name: 'Inicio', href: '/' },
@@ -28,27 +30,32 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-[#b2bec3]">
-      {/* Barra principal */}
+    <nav className="bg-gn-white fixed w-full z-20 top-0 start-0 border-b border-gn-gray/30">
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="flex items-center justify-between h-20">
+          {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-[#2d3436] tracking-tight">
-              ECEN
-            </span>
+            <Image
+              src="/images/logo-gn.jpeg"
+              alt="GN Estudio González Novillo"
+              width={280}
+              height={60}
+              className="h-12 w-auto"
+              priority
+            />
           </Link>
 
-          {/* Menú desktop */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop menu */}
+          <div className="hidden md:flex items-center gap-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
-                className={`text-sm font-medium ${
+                className={`text-sm font-medium tracking-wide transition-colors duration-300 ${
                   pathname === item.href
-                    ? 'text-[#2d3436] border-b-2 border-[#2d3436]'
-                    : 'text-[#636e72] hover:text-[#2d3436]'
+                    ? 'text-gn-black'
+                    : 'text-gn-gray hover:text-gn-black'
                 }`}
               >
                 {item.name}
@@ -56,30 +63,37 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Botón móvil */}
+          {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-[#2d3436]"
+            className="md:hidden p-2 text-gn-black"
+            aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
       </div>
 
-      {/* Menú móvil */}
-      <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden bg-white border-t border-[#b2bec3]`}>
-        <div className="px-4 py-3 space-y-1">
+      {/* Mobile menu */}
+      <div 
+        className={`${
+          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        } md:hidden bg-gn-white border-t border-gn-gray/30 overflow-hidden transition-all duration-300`}
+      >
+        <div className="px-4 py-4 space-y-1">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               onClick={(e) => handleClick(e, item.href)}
-              className={`block px-3 py-2 text-sm font-medium ${
+              className={`block px-4 py-3 text-sm font-medium transition-colors duration-300 ${
                 pathname === item.href
-                  ? 'text-[#2d3436] bg-[#f8f9fa]'
-                  : 'text-[#636e72] hover:text-[#2d3436] hover:bg-[#f8f9fa]'
+                  ? 'text-gn-black bg-gn-black/5'
+                  : 'text-gn-gray hover:text-gn-black hover:bg-gn-black/5'
               }`}
             >
               {item.name}
@@ -89,4 +103,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-} 
+}

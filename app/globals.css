@@ -3,65 +3,55 @@
 @tailwind utilities;
 
 :root {
-  --primary: #2d3436;    /* Negro suave */
-  --secondary: #636e72;  /* Gris medio */
-  --accent: #b2bec3;     /* Gris claro */
-  --background: #ffffff; /* Blanco */
-  --text: #2d3436;       /* Negro suave */
-  --gold: #b8860b;       /* Dorado oscuro */
-  --gold-light: #d4a843; /* Dorado claro */
-  --gold-dark: #8b6914;  /* Dorado más oscuro */
+  /* Paleta de marca GN - Manual de Marca 2026 */
+  --gn-black: #161616;
+  --gn-gray: #9D9D9C;
+  --gn-white: #F8F8F8;
+  
+  /* Semantic tokens */
+  --background: #F8F8F8;
+  --foreground: #161616;
+  --muted: #9D9D9C;
+  --accent: #161616;
 }
 
 @layer base {
   body {
-    @apply bg-white text-gray-800;
+    @apply bg-gn-white text-gn-black antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-[#2d3436] text-white px-6 py-2 rounded-md hover:bg-[#1e1e1e] transition-colors;
+    @apply bg-gn-black text-gn-white px-6 py-3 font-medium hover:bg-gn-gray transition-all duration-300;
   }
 
   .btn-secondary {
-    @apply bg-[#636e72] text-white px-6 py-2 rounded-md hover:bg-[#4a525a] transition-colors;
+    @apply bg-transparent border-2 border-gn-black text-gn-black px-6 py-3 font-medium hover:bg-gn-black hover:text-gn-white transition-all duration-300;
   }
 
-  .btn-gold {
-    @apply bg-amber-600 text-white px-6 py-3 rounded-md hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5;
-  }
-
-  .text-primary {
-    @apply text-[#2d3436];
-  }
-
-  .text-secondary {
-    @apply text-[#636e72];
-  }
-
-  .border-primary {
-    @apply border-[#2d3436];
-  }
-
-  .border-secondary {
-    @apply border-[#636e72];
+  .btn-outline {
+    @apply bg-transparent border border-gn-gray text-gn-black px-6 py-3 font-medium hover:border-gn-black transition-all duration-300;
   }
 
   /* Floating label styles */
   .floating-input {
-    @apply w-full px-4 pt-6 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all duration-300 peer bg-white;
+    @apply w-full px-4 pt-6 pb-2 border border-gn-gray bg-white focus:outline-none focus:border-gn-black focus:ring-1 focus:ring-gn-black/20 transition-all duration-300 peer;
   }
 
   .floating-label {
-    @apply absolute left-4 top-4 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-amber-600 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2;
+    @apply absolute left-4 top-4 text-gn-gray transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-black peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2;
   }
 }
 
-/* Estilos para el video de fondo */
+/* Hero section */
 .hero-section {
   position: relative;
-  background-color: #2d3436;
+  background-color: var(--gn-black);
 }
 
 .hero-video-container {
@@ -89,7 +79,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.7), rgba(22, 22, 22, 0.9));
   z-index: 1;
 }
 
@@ -98,18 +88,16 @@
   z-index: 2;
 }
 
-/* Hero pattern overlay */
+/* Subtle pattern overlay */
 .hero-pattern {
   background-image:
-    linear-gradient(30deg, rgba(184, 134, 11, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(184, 134, 11, 0.03) 87.5%, rgba(184, 134, 11, 0.03)),
-    linear-gradient(150deg, rgba(184, 134, 11, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(184, 134, 11, 0.03) 87.5%, rgba(184, 134, 11, 0.03)),
-    linear-gradient(30deg, rgba(184, 134, 11, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(184, 134, 11, 0.03) 87.5%, rgba(184, 134, 11, 0.03)),
-    linear-gradient(150deg, rgba(184, 134, 11, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(184, 134, 11, 0.03) 87.5%, rgba(184, 134, 11, 0.03));
+    linear-gradient(30deg, rgba(157, 157, 156, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(157, 157, 156, 0.03) 87.5%),
+    linear-gradient(150deg, rgba(157, 157, 156, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(157, 157, 156, 0.03) 87.5%);
   background-size: 80px 140px;
-  background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+  background-position: 0 0, 40px 70px;
 }
 
-/* Animaciones */
+/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -139,15 +127,6 @@
   }
 }
 
-@keyframes pulse-gold {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(184, 134, 11, 0);
-  }
-}
-
 .animate-fadeInUp {
   animation: fadeInUp 0.6s ease-out forwards;
 }
@@ -160,10 +139,6 @@
   animation: bounce-slow 2s ease-in-out infinite;
 }
 
-.animate-pulse-gold {
-  animation: pulse-gold 2s ease-in-out infinite;
-}
-
 /* Scroll indicator */
 .scroll-indicator {
   position: absolute;
@@ -173,18 +148,14 @@
   z-index: 10;
 }
 
-/* Card hover effects */
+/* Card styles */
 .card-hover {
   @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
 }
 
-.card-hover-gold {
-  @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-amber-500;
-}
-
 /* Professional card styles */
 .professional-card {
-  @apply bg-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+  @apply bg-white overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
 }
 
 .professional-card:hover .professional-overlay {
@@ -192,29 +163,33 @@
 }
 
 .professional-overlay {
-  @apply absolute inset-0 bg-gradient-to-t from-amber-900/80 via-amber-900/40 to-transparent opacity-0 transition-opacity duration-300;
+  @apply absolute inset-0 bg-gradient-to-t from-gn-black/80 via-gn-black/40 to-transparent opacity-0 transition-opacity duration-300;
 }
 
-/* Stat counter animation */
-@keyframes countUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Stat styles */
 .stat-item {
   @apply text-center p-6;
 }
 
 .stat-number {
-  @apply text-4xl md:text-5xl font-bold text-amber-600 mb-2;
+  @apply text-4xl md:text-5xl font-display font-bold text-gn-white mb-2;
 }
 
 .stat-label {
-  @apply text-gray-600 text-sm uppercase tracking-wider;
+  @apply text-gn-gray text-sm uppercase tracking-wider;
+}
+
+/* Divider */
+.section-divider {
+  @apply w-16 h-[2px] bg-gn-black mx-auto mt-4;
+}
+
+/* Focus states */
+input:focus, textarea:focus, select:focus {
+  @apply outline-none ring-1 ring-gn-black/20 border-gn-black;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(22, 22, 22, 0.15);
 }

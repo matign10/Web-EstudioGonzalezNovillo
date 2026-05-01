@@ -282,7 +282,7 @@ export default function Home() {
                 Somos un estudio jurídico con sede en la Ciudad de Buenos Aires, especializado en derecho penal y áreas conexas. Con más de 20 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas, en causas que van desde delitos económicos hasta conflictos familiares con aristas penales.
               </p>
               <p className="text-gn-gray mb-6 leading-relaxed">
-                Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, laborales o societarias. Creemos que el conflicto no termina en el expediente, y por eso buscamos soluciones que resuelvan el problema de fondo.
+                Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, laborales o societarias. Entendemos que el conflicto tiene distintas aristas y por eso buscamos soluciones que resuelvan el problema de fondo.
               </p>
               <p className="text-gn-gray leading-relaxed">
                 Trabajamos con compromiso, claridad y un trato cercano. Sabemos que cada caso afecta la vida de una persona, y eso guía nuestra forma de trabajar.

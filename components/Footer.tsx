@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { MapPin, Phone, Mail, Linkedin, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,24 +10,8 @@ export default function Footer() {
     <footer className="bg-gn-black text-gn-white">
       {/* Main footer content */}
       <div className="max-w-screen-xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand column */}
-          <div className="lg:col-span-1">
-            <p className="text-gn-gray mb-6 leading-relaxed text-sm">
-              Asesoramiento y representación legal de alta calidad. Luchamos incansablemente por los derechos de nuestros clientes con profesionalismo, ética y dedicación.
-            </p>
-            <div className="flex gap-3">
-              <a
-                href="https://linkedin.com/company/estudio-gonzalez-novillo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 border border-gn-gray/30 flex items-center justify-center hover:bg-gn-white hover:text-gn-black transition-all duration-300"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+
 
           {/* Quick Links */}
           <div>
@@ -103,13 +87,7 @@ export default function Footer() {
                   gonzaleznovilloabogados@gmail.com
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Clock className="w-4 h-4 text-gn-gray mt-0.5 flex-shrink-0" />
-                <span className="text-gn-gray text-sm">
-                  Lun - Vie: 9:00 - 18:00<br />
-                  Sáb: 9:00 - 13:00
-                </span>
-              </li>
+
             </ul>
           </div>
         </div>

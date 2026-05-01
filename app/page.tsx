@@ -72,7 +72,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Asesoramos y representamos tanto a imputados como a víctimas en causas penales de distinta complejidad. Nuestro enfoque combina la defensa penal con el trabajo coordinado en derecho civil, societario y laboral, para resolver el conflicto desde todos los frentes y no solo desde el expediente.
+              Asesoramos y representamos a imputados y víctimas en causas penales de distinta complejidad.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4"

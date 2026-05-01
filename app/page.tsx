@@ -146,50 +146,53 @@ export default function Home() {
             <motion.div variants={fadeInUp}>
               <PracticeArea
                 title="Defensa Penal"
-                description="Defensa penal estrategica con enfoque en resultados. Abordamos cada causa desde todos los angulos: penal, civil y societario."
+                description="Representamos a imputados en causas penales complejas, con estrategias orientadas a resultados concretos."
                 icon={<Shield className="w-10 h-10 text-gn-black" />}
                 expandedContent={{
-                  description: "Mas de 20 anos trabajando en delitos complejos. Ofrecemos una defensa robusta y profesional, garantizando el debido proceso y la proteccion de sus derechos fundamentales.",
+                  description: "Nuestro enfoque combina la defensa técnica con un análisis integral del conflicto, articulando acciones en sede penal, civil y societaria cuando el caso lo requiere.",
                   services: [
-                    "Estafas y fraudes corporativos",
-                    "Extorsiones y sextorsion",
+                    "Estafas, fraudes y delitos económicos",
+                    "Extorsión y coacción",
                     "Calumnias e injurias",
                     "Denuncias falsas",
-                    "Defensa reputacional y mediatica"
+                    "Delitos contra la integridad sexual",
+                    "Violencia familiar y de género (defensa de imputados)",
+                    "Homicidio y lesiones",
+                    "Delitos contra la propiedad"
                   ]
                 }}
               />
             </motion.div>
             <motion.div variants={fadeInUp}>
               <PracticeArea
-                title="Derecho Civil"
-                description="Asesoramiento integral en derecho civil, contratos, familia y sucesiones."
+                title="Representación de víctimas"
+                description="Acompañamos a víctimas de delitos en su rol de querellante, impulsando la causa y protegiendo sus derechos."
                 icon={<Scale className="w-10 h-10 text-gn-black" />}
                 expandedContent={{
-                  description: "Nuestro equipo especializado ofrece una amplia gama de servicios para proteger sus derechos y resolver conflictos de manera efectiva.",
+                  description: "Trabajamos junto a las víctimas para que tengan voz activa en el proceso penal, asegurando que sus intereses sean escuchados y defendidos.",
                   services: [
-                    "Contratos y negociaciones",
-                    "Derecho de familia",
-                    "Sucesiones y herencias",
-                    "Responsabilidad civil",
-                    "Derechos reales"
+                    "Constitución como querellante",
+                    "Impulso de la acción penal",
+                    "Reclamos civiles derivados del delito",
+                    "Acompañamiento en audiencias y declaraciones",
+                    "Medidas de protección"
                   ]
                 }}
               />
             </motion.div>
             <motion.div variants={fadeInUp}>
               <PracticeArea
-                title="Derecho Laboral"
-                description="Solución integral en materia laboral y relaciones de trabajo."
+                title="Derecho Civil y Laboral"
+                description="Trabajamos causas civiles y laborales conectadas con conflictos penales, o de manera autónoma según el caso."
                 icon={<Briefcase className="w-10 h-10 text-gn-black" />}
                 expandedContent={{
-                  description: "Brindamos asesoramiento completo en materia laboral, protegiendo los derechos tanto de empleadores como de trabajadores.",
+                  description: "Muchos conflictos penales tienen raíz o consecuencias en el ámbito civil o laboral. Los abordamos de forma coordinada para resolver el problema de fondo.",
                   services: [
-                    "Negociaciones colectivas",
-                    "Despidos y liquidaciones",
-                    "Accidentes laborales",
-                    "Discriminación laboral",
-                    "Convenios colectivos"
+                    "Daños y perjuicios",
+                    "Conflictos contractuales",
+                    "Despidos y reclamos laborales",
+                    "Sucesiones y disputas familiares",
+                    "Sociedades y conflictos entre socios"
                   ]
                 }}
               />
@@ -224,20 +227,20 @@ export default function Home() {
           >
             {[
               {
-                name: "Matías González Novillo",
-                role: "Director",
-                specialty: "Defensa Penal",
-                description: "Especialista en defensa penal estratégica. Brinda asesoramiento integral con amplia experiencia en litigios complejos.",
-                linkedin: "https://linkedin.com/in/matias-gonzalez-novillo",
-                image: "/images/mati.jpg"
-              },
-              {
                 name: "Jorge González Novillo",
-                role: "Abogado Senior",
-                specialty: "Derecho Civil",
-                description: "Abogado con amplia trayectoria en derecho civil y comercial. Especialista en negociaciones y resolución de conflictos.",
+                role: "Socio fundador",
+                specialty: "Derecho Penal y Civil",
+                description: "Abogado con más de 30 años de experiencia en litigios penales y civiles complejos. Ha representado a empresarios, deportistas y figuras públicas en casos de alta exposición.",
                 linkedin: "#",
                 image: "/images/coco.jpg"
+              },
+              {
+                name: "Matías González Novillo",
+                role: "Socio",
+                specialty: "Defensa Penal",
+                description: "Abogado penalista con experiencia en delitos económicos, extorsiones y defensa de la reputación. Trabaja con foco en la estrategia integral del caso.",
+                linkedin: "https://linkedin.com/in/matias-gonzalez-novillo",
+                image: "/images/mati.jpg"
               }
             ].map((profesional, i) => (
               <motion.div
@@ -316,8 +319,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Casos Emblematicos */}
-      <section className="py-24 md:py-32 bg-gn-white" id="casos">
+      {/* En los medios */}
+      <section className="py-24 md:py-32 bg-gn-white" id="medios">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -326,15 +329,15 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Experiencia Comprobada</span>
+            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Repercusión</span>
             <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
-              Casos Emblematicos
+              En los medios
             </h2>
             <div className="section-divider" />
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -342,40 +345,53 @@ export default function Home() {
           >
             {[
               {
-                category: "Estafas Corporativas",
-                title: "Fraudes en Inversiones Inmobiliarias",
-                description: "Representacion de inversores afectados por esquemas fraudulentos. Recuperacion de activos y persecucion penal de responsables.",
-                highlight: "Casos de alta complejidad"
+                source: "Infobae",
+                title: "Caso Natacha Jaitt: procesan a Morena Rial por calumnias e injurias",
+                url: "https://www.infobae.com/judiciales/2024/11/14/caso-natacha-jaitt-procesan-a-morena-rial-por-calumnias-e-injurias/"
               },
               {
-                category: "Delitos contra el Honor",
-                title: "Calumnias e Injurias Mediaticas",
-                description: "Defensa del honor y la reputacion en casos de difamacion publica. Estrategias legales combinadas: penal, civil y mediatica.",
-                highlight: "Exposicion mediatica"
+                source: "Infobae",
+                title: "Detienen a modelo sueca acusada de extorsionar a un empresario",
+                url: "https://www.infobae.com/sociedad/policiales/2024/06/04/detienen-a-alexandra-larsson-la-modelo-sueca-acusada-de-extorsionar-a-un-empresario-argentino/"
               },
               {
-                category: "Extorsiones",
-                title: "Sextorsion y Amenazas",
-                description: "Defensa integral ante extorsiones y amenazas. Proteccion de la victima, preservacion de evidencia y accion penal inmediata.",
-                highlight: "Intervencion urgente"
+                source: "TN",
+                title: "Detienen a modelo sueca por extorsión",
+                url: "https://tn.com.ar/policiales/2024/06/04/detuvieron-a-alexandra-larsson-la-modelo-sueca-acusada-de-extorsionar-a-un-empresario/"
+              },
+              {
+                source: "Clarín",
+                title: "Fraher Group: Denuncian a desarrollador inmobiliario por estafa",
+                url: "https://www.clarin.com/policiales/200-damnificados-denuncian-fraude-inmobiliario-millonario-empresa-construia-edificios-pozo_0_hSl3GKi5Wy.html"
+              },
+              {
+                source: "TN",
+                title: "Fraher Group: Más de 200 damnificados por presunta estafa inmobiliaria",
+                url: "https://tn.com.ar/policiales/2024/08/22/mas-de-200-damnificados-por-una-presunta-estafa-inmobiliaria-les-prometieron-departamentos-y-nunca-entregaron/"
+              },
+              {
+                source: "Infobae",
+                title: "Fraher Group: Escándalo inmobiliario deja cientos de afectados",
+                url: "https://www.infobae.com/sociedad/policiales/2024/08/22/mas-de-200-familias-denuncian-a-un-empresario-por-estafa-vendio-departamentos-en-pozo-y-nunca-los-entrego/"
               }
-            ].map((caso, i) => (
-              <motion.div
+            ].map((noticia, i) => (
+              <motion.a
                 key={i}
+                href={noticia.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 variants={fadeInUp}
-                className="group"
+                className="group block"
               >
-                <div className="h-full bg-gn-white border border-gn-gray/20 p-8 transition-all duration-300 hover:border-gn-black hover:shadow-lg">
+                <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-300 hover:border-gn-black hover:shadow-lg">
                   <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4">
-                    {caso.category}
+                    {noticia.source}
                   </span>
-                  <h3 className="text-xl font-display text-gn-black mb-3">{caso.title}</h3>
-                  <p className="text-gn-gray leading-relaxed mb-4">{caso.description}</p>
-                  <div className="pt-4 border-t border-gn-gray/20">
-                    <span className="text-xs text-gn-gray uppercase tracking-widest">{caso.highlight}</span>
-                  </div>
+                  <h3 className="text-lg font-display text-gn-black group-hover:text-gn-gray transition-colors leading-snug">
+                    {noticia.title}
+                  </h3>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </motion.div>
         </div>
@@ -427,16 +443,16 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <h3 className="text-2xl font-display text-gn-black mb-4">
-                Quienes Somos
+                Quiénes Somos
               </h3>
               <p className="text-gn-gray mb-6 leading-relaxed">
-                Somos un estudio juridico con mas de 20 anos de experiencia trabajando en delitos complejos. Hemos representado a figuras del deporte, empresarios, inversores y familias en casos de alta exposicion mediatica.
+                Somos un estudio jurídico con sede en la Ciudad de Buenos Aires, especializado en derecho penal y áreas conexas. Con más de 30 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas, en causas que van desde delitos económicos hasta conflictos familiares con aristas penales.
               </p>
               <p className="text-gn-gray mb-6 leading-relaxed">
-                Abordamos cada causa desde todos los angulos posibles: penal, civil, societario. No nos limitamos a una sola jurisdiccion ni a una sola estrategia. Buscamos la solucion mas efectiva para cada caso particular.
+                Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, laborales o societarias. Creemos que el conflicto no termina en el expediente, y por eso buscamos soluciones que resuelvan el problema de fondo.
               </p>
               <p className="text-gn-gray leading-relaxed">
-                Nuestro enfoque es proactivo: no esperamos a que las cosas pasen, las anticipamos. Porque en derecho penal, el tiempo y la estrategia lo son todo.
+                Trabajamos con compromiso, claridad y un trato cercano. Sabemos que cada caso afecta la vida de una persona, y eso guía nuestra forma de trabajar.
               </p>
             </motion.div>
           </div>
@@ -453,7 +469,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Conózcanos</span>
+            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Hablemos</span>
             <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
               Contacto
             </h2>
@@ -507,8 +523,8 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-gn-black mb-1">Email</h4>
-                      <a href="mailto:contacto@estudiogn.com" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
-                        contacto@estudiogn.com
+                      <a href="mailto:estudiolegalgn@gmail.com" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
+                        estudiolegalgn@gmail.com
                       </a>
                     </div>
                   </div>

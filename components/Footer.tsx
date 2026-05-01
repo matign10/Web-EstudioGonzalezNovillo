@@ -49,6 +49,7 @@ export default function Footer() {
                 { label: 'Inicio', href: '/' },
                 { label: 'Áreas de Práctica', href: '#areas' },
                 { label: 'Profesionales', href: '#profesionales' },
+                { label: 'En los medios', href: '#medios' },
                 { label: 'Sobre Nosotros', href: '#sobre-nosotros' },
                 { label: 'Contacto', href: '#contacto' },
               ].map((link) => (
@@ -72,9 +73,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 'Defensa Penal',
-                'Derecho Civil',
-                'Derecho Laboral',
-                'Derecho Comercial',
+                'Representación de víctimas',
+                'Derecho Civil y Laboral',
               ].map((area) => (
                 <li key={area}>
                   <Link
@@ -109,8 +109,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-gn-gray flex-shrink-0" />
-                <a href="mailto:contacto@estudiogn.com" className="text-gn-gray hover:text-gn-white transition-colors text-sm">
-                  contacto@estudiogn.com
+                <a href="mailto:estudiolegalgn@gmail.com" className="text-gn-gray hover:text-gn-white transition-colors text-sm">
+                  estudiolegalgn@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">

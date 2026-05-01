@@ -72,11 +72,8 @@ export default function ProfessionalsGrid() {
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src={profesional.image}
-                  alt={`${profesional.name} - ${profesional.role} - Estudio González Novillo`}
+                  alt={profesional.name}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
-                  quality={75}
-                  loading="lazy"
                   className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
               </div>

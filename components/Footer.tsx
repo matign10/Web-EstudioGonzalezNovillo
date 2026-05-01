@@ -49,8 +49,8 @@ export default function Footer() {
                 { label: 'Inicio', href: '/' },
                 { label: 'Áreas de Práctica', href: '#areas' },
                 { label: 'Profesionales', href: '#profesionales' },
-                { label: 'En los medios', href: '#medios' },
-                { label: 'Sobre Nosotros', href: '#sobre-nosotros' },
+                { label: 'Prensa', href: '#prensa' },
+                { label: 'Nosotros', href: '#nosotros' },
                 { label: 'Contacto', href: '#contacto' },
               ].map((link) => (
                 <li key={link.label}>

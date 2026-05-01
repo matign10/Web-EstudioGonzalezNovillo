@@ -3,10 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronDown, Scale, Briefcase, Shield, Linkedin } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import BackgroundImage from "@/components/BackgroundVideo";
-import GoogleMap from "@/components/GoogleMap";
-import PracticeArea from "@/components/PracticeArea";
+import PracticeAreasUnified from "@/components/PracticeAreasUnified";
+import ProfessionalsGrid from "@/components/ProfessionalsGrid";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -137,66 +137,12 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <motion.div variants={fadeInUp}>
-              <PracticeArea
-                title="Defensa Penal"
-                description="Representamos a imputados en causas penales complejas, con estrategias orientadas a resultados concretos."
-                icon={<Shield className="w-10 h-10 text-gn-black" />}
-                expandedContent={{
-                  description: "Nuestro enfoque combina la defensa técnica con un análisis integral del conflicto, articulando acciones en sede penal, civil y societaria cuando el caso lo requiere.",
-                  services: [
-                    "Estafas, fraudes y delitos económicos",
-                    "Extorsión y coacción",
-                    "Calumnias e injurias",
-                    "Denuncias falsas",
-                    "Delitos contra la integridad sexual",
-                    "Violencia familiar y de género (defensa de imputados)",
-                    "Homicidio y lesiones",
-                    "Delitos contra la propiedad"
-                  ]
-                }}
-              />
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <PracticeArea
-                title="Representación de víctimas"
-                description="Acompañamos a víctimas de delitos en su rol de querellante, impulsando la causa y protegiendo sus derechos."
-                icon={<Scale className="w-10 h-10 text-gn-black" />}
-                expandedContent={{
-                  description: "Trabajamos junto a las víctimas para que tengan voz activa en el proceso penal, asegurando que sus intereses sean escuchados y defendidos.",
-                  services: [
-                    "Constitución como querellante",
-                    "Impulso de la acción penal",
-                    "Reclamos civiles derivados del delito",
-                    "Acompañamiento en audiencias y declaraciones",
-                    "Medidas de protección"
-                  ]
-                }}
-              />
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <PracticeArea
-                title="Derecho Civil y Laboral"
-                description="Trabajamos causas civiles y laborales conectadas con conflictos penales, o de manera autónoma según el caso."
-                icon={<Briefcase className="w-10 h-10 text-gn-black" />}
-                expandedContent={{
-                  description: "Muchos conflictos penales tienen raíz o consecuencias en el ámbito civil o laboral. Los abordamos de forma coordinada para resolver el problema de fondo.",
-                  services: [
-                    "Daños y perjuicios",
-                    "Conflictos contractuales",
-                    "Despidos y reclamos laborales",
-                    "Sucesiones y disputas familiares",
-                    "Sociedades y conflictos entre socios"
-                  ]
-                }}
-              />
-            </motion.div>
+            <PracticeAreasUnified />
           </motion.div>
         </div>
       </section>
@@ -218,109 +164,12 @@ export default function Home() {
             <div className="section-divider" />
           </motion.div>
 
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            {[
-              {
-                name: "Jorge González Novillo",
-                role: "Socio fundador",
-                specialty: "Derecho Penal y Civil",
-                description: "Abogado con más de 30 años de experiencia en litigios penales y civiles complejos. Ha representado a empresarios, deportistas y figuras públicas en casos de alta exposición.",
-                linkedin: "#",
-                image: "/images/coco.jpg"
-              },
-              {
-                name: "Matías González Novillo",
-                role: "Socio",
-                specialty: "Defensa Penal",
-                description: "Abogado penalista con experiencia en delitos económicos, extorsiones y defensa de la reputación. Trabaja con foco en la estrategia integral del caso.",
-                linkedin: "https://linkedin.com/in/matias-gonzalez-novillo",
-                image: "/images/mati.jpg"
-              }
-            ].map((profesional, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                className="group"
-              >
-                <div className="bg-gn-white border border-gn-gray/20 overflow-hidden transition-all duration-300 hover:border-gn-black">
-                  {/* Photo container */}
-                  <div className="relative aspect-[3/4] overflow-hidden">
-                    <Image
-                      src={profesional.image}
-                      alt={profesional.name}
-                      fill
-                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    />
-                    {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-gn-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <a
-                        href={profesional.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-gn-white text-gn-black p-3 hover:bg-gn-gray transition-colors"
-                        aria-label={`LinkedIn de ${profesional.name}`}
-                      >
-                        <Linkedin className="w-5 h-5" />
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <span className="inline-block px-3 py-1 bg-gn-black/5 text-gn-black text-xs font-medium tracking-wide mb-3">
-                      {profesional.specialty}
-                    </span>
-                    <h3 className="text-lg font-display text-gn-black mb-1">{profesional.name}</h3>
-                    <p className="text-gn-gray text-sm font-medium mb-3">{profesional.role}</p>
-                    <p className="text-sm text-gn-gray leading-relaxed line-clamp-3">{profesional.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+          <ProfessionalsGrid />
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-gn-black">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            {[
-              { number: "20+", label: "Años de Experiencia" },
-              { number: "500+", label: "Casos Resueltos" },
-              { number: "98%", label: "Clientes Satisfechos" },
-              { number: "4", label: "Áreas de Práctica" }
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-              >
-                <div className="text-4xl md:text-5xl font-display text-gn-white mb-2">{stat.number}</div>
-                <div className="text-gn-gray text-xs uppercase tracking-widest">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* En los medios */}
-      <section className="py-24 md:py-32 bg-gn-white" id="medios">
+      {/* Prensa */}
+      <section className="py-24 md:py-32 bg-gn-white" id="prensa">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -331,7 +180,7 @@ export default function Home() {
           >
             <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Repercusión</span>
             <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
-              En los medios
+              Prensa
             </h2>
             <div className="section-divider" />
           </motion.div>
@@ -397,8 +246,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sobre Nosotros */}
-      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-gray/20" id="sobre-nosotros">
+      {/* Nosotros */}
+      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-gray/20" id="nosotros">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -409,7 +258,7 @@ export default function Home() {
           >
             <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Conózcanos</span>
             <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
-              Sobre Nosotros
+              Nosotros
             </h2>
             <div className="section-divider" />
           </motion.div>
@@ -499,7 +348,9 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-gn-black mb-1">Dirección</h4>
-                      <p className="text-gn-gray text-sm">Uruguay 763, C1013<br />CABA, Argentina</p>
+                      <a href="https://maps.app.goo.gl/Degogww5pQ8KDPUk6" target="_blank" rel="noopener noreferrer" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
+                        Uruguay 763, C1013<br />CABA, Argentina
+                      </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -542,10 +393,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Map */}
-              <div className="h-[300px] border border-gn-gray/20 overflow-hidden">
-                <GoogleMap />
-              </div>
+
             </motion.div>
 
             <motion.div

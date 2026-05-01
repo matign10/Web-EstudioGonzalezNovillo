@@ -279,7 +279,7 @@ export default function Home() {
                 Quiénes Somos
               </h3>
               <p className="text-gn-gray mb-6 leading-relaxed">
-                Somos un estudio jurídico con sede en la Ciudad de Buenos Aires, especializado en derecho penal y áreas conexas. Con más de 30 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas, en causas que van desde delitos económicos hasta conflictos familiares con aristas penales.
+                Somos un estudio jurídico con sede en la Ciudad de Buenos Aires, especializado en derecho penal y áreas conexas. Con más de 20 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas, en causas que van desde delitos económicos hasta conflictos familiares con aristas penales.
               </p>
               <p className="text-gn-gray mb-6 leading-relaxed">
                 Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, laborales o societarias. Creemos que el conflicto no termina en el expediente, y por eso buscamos soluciones que resuelvan el problema de fondo.

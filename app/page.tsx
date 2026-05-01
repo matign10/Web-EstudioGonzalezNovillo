@@ -55,7 +55,7 @@ export default function Home() {
               className="flex items-center gap-3 mb-6"
             >
               <div className="w-12 h-[1px] bg-gn-gray" />
-              <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Defensa Penal Estratégica</span>
+              <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Derecho penal y áreas conexas</span>
             </motion.div>
             <motion.h1
               className="text-4xl md:text-6xl lg:text-7xl font-display mb-6 tracking-tight leading-[1.1] text-balance"
@@ -73,7 +73,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Mas de 20 anos trabajando en delitos complejos. Casos que involucran figuras del deporte, empresarios, inversores y familias.
+              Asesoramos y representamos tanto a imputados como a víctimas en causas penales de distinta complejidad. Nuestro enfoque combina la defensa penal con el trabajo coordinado en derecho civil, societario y laboral, para resolver el conflicto desde todos los frentes y no solo desde el expediente.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4"

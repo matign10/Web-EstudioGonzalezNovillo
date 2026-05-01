@@ -10,6 +10,7 @@ const navigation = [
   { name: 'Inicio', href: '/' },
   { name: 'Áreas de Práctica', href: '#areas' },
   { name: 'Profesionales', href: '#profesionales' },
+  { name: 'En los medios', href: '#medios' },
   { name: 'Sobre Nosotros', href: '#sobre-nosotros' },
   { name: 'Contacto', href: '#contacto' },
 ];

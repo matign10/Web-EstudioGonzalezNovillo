@@ -2,17 +2,20 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Scale, Briefcase, ChevronRight, Landmark } from 'lucide-react';
+import { Shield, Scale, Briefcase, ChevronRight } from 'lucide-react';
 
 const practiceAreas = [
   {
     id: 'defensa-penal',
     title: "Defensa Penal",
     icon: Shield,
-    description: "Representamos a imputados en causas penales, con estrategias precisas desde el inicio, que buscan la mejor solución posible para sus intereses.",
+    description: "Representamos a imputados en causas penales, con estrategias precisas desde el inicio que buscan la mejor solución para sus intereses.",
     expandedDescription: "Nuestro enfoque combina la defensa técnica con un análisis integral del conflicto, articulando acciones en sede penal, civil y societaria cuando el caso lo requiere.",
     services: [
       "Estafas, fraudes y delitos económicos",
+      "Delitos tributarios (evasión, apropiación indebida, asociación ilícita fiscal)",
+      "Lavado de activos y delitos cambiarios",
+      "Administración fraudulenta y delitos societarios",
       "Extorsión y coacción",
       "Calumnias e injurias",
       "Denuncias falsas",
@@ -20,23 +23,6 @@ const practiceAreas = [
       "Violencia familiar y de género (defensa de imputados)",
       "Homicidio y lesiones",
       "Delitos contra la propiedad"
-    ]
-  },
-  {
-    id: 'penal-economico',
-    title: "Penal Económico y Tributario",
-    icon: Landmark,
-    description: "Asesoramos y defendemos a personas y empresas frente a denuncias por delitos económicos, tributarios y financieros.",
-    expandedDescription: "Combinamos el análisis penal con conocimiento contable y societario para diseñar estrategias eficaces, tanto en la etapa de investigación como en juicio.",
-    services: [
-      "Evasión tributaria simple y agravada",
-      "Apropiación indebida de tributos y aportes",
-      "Lavado de activos",
-      "Asociación ilícita fiscal",
-      "Delitos contra el régimen previsional",
-      "Estafas y defraudaciones complejas",
-      "Administración fraudulenta",
-      "Delitos cambiarios y aduaneros"
     ]
   },
   {

@@ -47,7 +47,6 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 'Defensa Penal',
-                'Penal Económico y Tributario',
                 'Representación de víctimas',
                 'Derecho Civil y Laboral',
               ].map((area) => (

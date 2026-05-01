@@ -35,13 +35,15 @@ export default function Navbar() {
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="flex items-center justify-between h-28 md:h-32">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center" aria-label="Estudio González Novillo - Inicio">
             <Image
               src="/images/logo-gn.jpeg"
-              alt="GN Estudio González Novillo"
+              alt="Estudio González Novillo - Abogados Penalistas"
               width={500}
               height={120}
+              sizes="(max-width: 768px) 200px, 300px"
               className="h-20 md:h-24 w-auto"
+              style={{ mixBlendMode: "multiply" }}
               priority
             />
           </Link>

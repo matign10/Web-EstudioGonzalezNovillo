@@ -7,7 +7,6 @@ import { ChevronDown } from "lucide-react";
 import BackgroundImage from "@/components/BackgroundVideo";
 import PracticeAreasUnified from "@/components/PracticeAreasUnified";
 import ProfessionalsGrid from "@/components/ProfessionalsGrid";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
@@ -325,16 +324,15 @@ export default function Home() {
             <div className="section-divider" />
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Contact Info */}
             <motion.div
-              className="space-y-8"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              {/* Contact cards */}
-              <div className="bg-gn-white border border-gn-gray/20 p-8">
+              <div className="bg-gn-white border border-gn-gray/20 p-8 h-full">
                 <h3 className="text-xl font-display text-gn-black mb-6">
                   Información de Contacto
                 </h3>
@@ -360,8 +358,8 @@ export default function Home() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-medium text-gn-black mb-1">Teléfono</h4>
-                      <a href="https://wa.me/message/7BQRXOHREOF4L1" target="_blank" rel="noopener noreferrer" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
+                      <h4 className="font-medium text-gn-black mb-1">Teléfono/WhatsApp</h4>
+                      <a href="https://wa.me/message/7BQRXOHREOF4L1" target="_blank" rel="noopener noreferrer" className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gray transition-colors">
                         +54 9 11 5476 3721
                       </a>
                     </div>
@@ -374,8 +372,8 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-gn-black mb-1">Email</h4>
-                      <a href="mailto:estudiolegalgn@gmail.com" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
-                        estudiolegalgn@gmail.com
+                      <a href="mailto:gonzaleznovilloabogados@gmail.com" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
+                        gonzaleznovilloabogados@gmail.com
                       </a>
                     </div>
                   </div>
@@ -392,29 +390,27 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              {/* Map */}
-              <div className="w-full overflow-hidden border border-gn-gray/20">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3284.1714080357265!2d-58.3891075!3d-34.5998269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac76e4be365%3A0xb3558178c7ed599b!2sUruguay%20763%2C%20C1015ABO%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1777664996811!5m2!1ses!2sar" 
-                  width="100%" 
-                  height="300" 
-                  style={{ border: 0 }} 
-                  allowFullScreen 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Ubicación del Estudio González Novillo"
-                />
-              </div>
             </motion.div>
 
+            {/* Map */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <ContactForm />
+              <div className="w-full h-full min-h-[400px] overflow-hidden border border-gn-gray/20">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3284.1714080357265!2d-58.3891075!3d-34.5998269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac76e4be365%3A0xb3558178c7ed599b!2sUruguay%20763%2C%20C1015ABO%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1777664996811!5m2!1ses!2sar" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0, minHeight: '400px' }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación del Estudio González Novillo"
+                />
+              </div>
             </motion.div>
           </div>
         </div>

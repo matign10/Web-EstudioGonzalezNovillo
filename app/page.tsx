@@ -194,14 +194,14 @@ export default function Home() {
           >
             {[
               {
-                source: "Infobae",
-                title: "Caso Natacha Jaitt: procesan a Morena Rial por calumnias e injurias",
-                url: "https://www.infobae.com/judiciales/2024/11/14/caso-natacha-jaitt-procesan-a-morena-rial-por-calumnias-e-injurias/"
+                source: "Perfil",
+                title: "Habló el abogado de Florencia Cocucci, la supuesta novia de Nisman: \"Está aterrada\"",
+                url: "https://www.perfil.com/noticias/politica/hablo-el-abogado-de-florencia-cocucci-la-supuesta-novia-de-nisman-esta-aterrada-0303-0051.phtml"
               },
               {
-                source: "Infobae",
-                title: "Detienen a modelo sueca acusada de extorsionar a un empresario",
-                url: "https://www.infobae.com/sociedad/policiales/2024/06/04/detienen-a-alexandra-larsson-la-modelo-sueca-acusada-de-extorsionar-a-un-empresario-argentino/"
+                source: "Diario Popular",
+                title: "Abogado de Larsson: \"La denuncia es por extorsión y no por abuso\"",
+                url: "https://www.diariopopular.com.ar/espectaculos/abogado-larsson-la-denuncia-es-extorsion-y-no-abuso-n136219"
               },
               {
                 source: "TN",
@@ -348,9 +348,9 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-gn-black mb-1">Dirección</h4>
-                      <a href="https://maps.app.goo.gl/Degogww5pQ8KDPUk6" target="_blank" rel="noopener noreferrer" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
+                      <p className="text-gn-gray text-sm">
                         Uruguay 763, C1013<br />CABA, Argentina
-                      </a>
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -393,7 +393,19 @@ export default function Home() {
                 </div>
               </div>
 
-
+              {/* Map */}
+              <div className="w-full overflow-hidden border border-gn-gray/20">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3284.1714080357265!2d-58.3891075!3d-34.5998269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac76e4be365%3A0xb3558178c7ed599b!2sUruguay%20763%2C%20C1015ABO%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1777664996811!5m2!1ses!2sar" 
+                  width="100%" 
+                  height="300" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación del Estudio González Novillo"
+                />
+              </div>
             </motion.div>
 
             <motion.div

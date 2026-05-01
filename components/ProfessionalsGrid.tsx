@@ -9,14 +9,14 @@ const professionals = [
   {
     name: "Jorge González Novillo",
     role: "Socio fundador",
-    description: "Abogado con más de 30 años de experiencia en litigios penales y civiles complejos. Ha representado a empresarios, deportistas y figuras públicas en casos de alta exposición.",
+    description: "Abogado por la Universidad del Museo Social Argentino, especializado en Derecho Penal y Ciencias Penales en la Universidad de Palermo, con posgrado en Derecho Penal Tributario en la UBA. Profesor titular de Derecho Procesal Penal en UCES y profesor invitado en la Escuela Judicial del Consejo de la Magistratura y en la Maestría en Derecho Procesal de la Universidad Nacional de Rosario. Integró el Juzgado Federal Nº 2 y la Fiscalía de la Cámara Federal en lo Criminal y Correccional. Fue designado Árbitro Internacional por la Entidad Binacional Yacyretá ante la Corte Internacional de Arbitraje de la Cámara de Comercio Internacional. Es miembro fundador del centro de estudios \"Economía y Delito\" de la Facultad de Ciencias Económicas de la UBA, donde preside la comisión de delitos informáticos.",
     linkedin: "#",
     image: "/images/coco.jpg"
   },
   {
     name: "Matías González Novillo",
     role: "Socio",
-    description: "Abogado penalista con experiencia en delitos económicos, extorsiones y defensa de la reputación. Trabaja con foco en la estrategia integral del caso.",
+    description: "Egresado de la Facultad de Derecho de la UBA, con orientación en derecho penal. Trabajó seis años en el Ministerio Público Fiscal de la CABA, donde se desempeñó sucesivamente como auxiliar administrativo, escribiente, relator y prosecretario administrativo de Cámara. Esa experiencia le permitió conocer el funcionamiento del sistema penal desde adentro antes de dedicarse al ejercicio profesional independiente, al que se volcó en 2023.",
     linkedin: "https://linkedin.com/in/matias-gonzalez-novillo",
     image: "/images/mati.jpg"
   }

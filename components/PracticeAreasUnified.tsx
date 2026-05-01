@@ -9,7 +9,7 @@ const practiceAreas = [
     id: 'defensa-penal',
     title: "Defensa Penal",
     icon: Shield,
-    description: "Representamos a imputados en causas penales complejas, con estrategias orientadas a resultados concretos.",
+    description: "Representamos a imputados en causas penales, con estrategias precisas desde el inicio, que buscan la mejor solución posible para sus intereses.",
     expandedDescription: "Nuestro enfoque combina la defensa técnica con un análisis integral del conflicto, articulando acciones en sede penal, civil y societaria cuando el caso lo requiere.",
     services: [
       "Estafas, fraudes y delitos económicos",

@@ -72,7 +72,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Con más de 20 años de trayectoria, asesoramos y representamos a imputados y víctimas en causas penales de distinta complejidad.
+              Asesoramos y representamos a imputados y víctimas en causas penales de distinta complejidad.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4"
@@ -110,7 +110,7 @@ export default function Home() {
             onClick={(e) => scrollToSection(e, '#areas')}
             className="flex flex-col items-center text-gn-gray hover:text-gn-white transition-colors cursor-pointer"
           >
-            <span className="text-xs tracking-widest uppercase mb-2">Conozca más</span>
+            <span className="text-xs tracking-widest uppercase mb-2">Explorar</span>
             <ChevronDown className="w-5 h-5 animate-bounce-slow" />
           </a>
         </motion.div>
@@ -184,13 +184,14 @@ export default function Home() {
             <div className="section-divider" />
           </motion.div>
 
-          {(() => {
-            const noticias = [
-              {
-                source: "Infobae",
-                title: "Los detalles de la segunda denuncia penal a Marcelo Moretti, presentada por un dirigente de San Lorenzo que estuvo en su espacio",
-                url: "https://www.infobae.com/deportes/2025/04/23/los-detalles-de-la-segunda-denuncia-penal-a-marcelo-moretti-presentada-por-un-dirigente-de-san-lorenzo-que-estuvo-en-su-espacio/"
-              },
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {[
               {
                 source: "Perfil",
                 title: "Habló el abogado de Florencia Cocucci, la supuesta novia de Nisman: \"Está aterrada\"",
@@ -200,66 +201,32 @@ export default function Home() {
                 source: "Diario Popular",
                 title: "Abogado de Larsson: \"La denuncia es por extorsión y no por abuso\"",
                 url: "https://www.diariopopular.com.ar/espectaculos/abogado-larsson-la-denuncia-es-extorsion-y-no-abuso-n136219"
+              },
+              {
+                source: "Infobae",
+                title: "Los detalles de la segunda denuncia penal a Marcelo Moretti, presentada por un dirigente de San Lorenzo que estuvo en su espacio",
+                url: "https://www.infobae.com/deportes/2025/04/23/los-detalles-de-la-segunda-denuncia-penal-a-marcelo-moretti-presentada-por-un-dirigente-de-san-lorenzo-que-estuvo-en-su-espacio/"
               }
-            ];
-            const [destacada, ...resto] = noticias;
-            return (
-              <motion.div
-                className="grid grid-cols-1 lg:grid-cols-3 gap-6"
-                variants={staggerContainer}
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true, margin: "-100px" }}
+            ].map((noticia, i) => (
+              <motion.a
+                key={i}
+                href={noticia.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={fadeInUp}
+                className="group block"
               >
-                {/* Featured article */}
-                <motion.a
-                  href={destacada.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variants={fadeInUp}
-                  className="group block lg:col-span-2 lg:row-span-2"
-                >
-                  <div className="h-full bg-gn-black text-gn-white p-8 md:p-10 transition-all duration-300 hover:bg-gn-black/90 flex flex-col justify-between min-h-[280px]">
-                    <div>
-                      <span className="inline-block px-3 py-1 bg-gn-white text-gn-black text-xs font-medium tracking-wide mb-6">
-                        {destacada.source}
-                      </span>
-                      <h3 className="text-2xl md:text-3xl font-display leading-tight text-balance">
-                        {destacada.title}
-                      </h3>
-                    </div>
-                    <div className="mt-8 flex items-center gap-2 text-xs uppercase tracking-widest text-gn-gray group-hover:text-gn-white transition-colors">
-                      <span>Leer nota</span>
-                      <span aria-hidden="true">&rarr;</span>
-                    </div>
-                  </div>
-                </motion.a>
-
-                {/* Supporting articles */}
-                {resto.map((noticia, i) => (
-                  <motion.a
-                    key={i}
-                    href={noticia.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variants={fadeInUp}
-                    className="group block"
-                  >
-                    <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-300 hover:border-gn-black hover:shadow-lg flex flex-col justify-between min-h-[180px]">
-                      <div>
-                        <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4">
-                          {noticia.source}
-                        </span>
-                        <h3 className="text-base font-display text-gn-black group-hover:text-gn-gray transition-colors leading-snug">
-                          {noticia.title}
-                        </h3>
-                      </div>
-                    </div>
-                  </motion.a>
-                ))}
-              </motion.div>
-            );
-          })()}
+                <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-300 hover:border-gn-black hover:shadow-lg">
+                  <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4">
+                    {noticia.source}
+                  </span>
+                  <h3 className="text-lg font-display text-gn-black group-hover:text-gn-gray transition-colors leading-snug">
+                    {noticia.title}
+                  </h3>
+                </div>
+              </motion.a>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -291,12 +258,9 @@ export default function Home() {
               <div className="aspect-[4/3] overflow-hidden">
                 <Image
                   src="/images/equipo-gn.jpg"
-                  alt="Equipo del Estudio González Novillo - Abogados Penalistas en Buenos Aires"
+                  alt="Equipo GN Estudio González Novillo"
                   width={800}
                   height={600}
-                  sizes="(max-width: 1024px) 100vw, 600px"
-                  quality={75}
-                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>

@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { MapPin, Phone, Mail, Linkedin, Clock } from 'lucide-react';
 
 export default function Footer() {
@@ -14,15 +13,6 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-6">
-              <Image
-                src="/images/logo-gn.jpeg"
-                alt="GN Estudio González Novillo"
-                width={200}
-                height={50}
-                className="h-10 w-auto brightness-0 invert"
-              />
-            </Link>
             <p className="text-gn-gray mb-6 leading-relaxed text-sm">
               Asesoramiento y representación legal de alta calidad. Luchamos incansablemente por los derechos de nuestros clientes con profesionalismo, ética y dedicación.
             </p>

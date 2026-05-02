@@ -37,11 +37,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/logo-gn.svg"
+              src="/images/logo-gn.jpeg"
               alt="Estudio González Novillo - Abogados Penalistas en Buenos Aires"
               width={500}
               height={120}
-              className="h-20 md:h-24 w-auto"
+              className="h-20 md:h-24 w-auto mix-blend-multiply"
               priority
             />
           </Link>

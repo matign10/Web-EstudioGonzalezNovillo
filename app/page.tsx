@@ -212,7 +212,7 @@ export default function Home() {
                 key={i}
                 href={noticia.url}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 variants={fadeInUp}
                 className="group block"
               >
@@ -258,9 +258,10 @@ export default function Home() {
               <div className="aspect-[4/3] overflow-hidden">
                 <Image
                   src="/images/equipo-gn.jpg"
-                  alt="Equipo GN Estudio González Novillo"
+                  alt="Equipo de abogados penalistas del Estudio González Novillo en Buenos Aires"
                   width={800}
                   height={600}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -279,7 +280,7 @@ export default function Home() {
                 Quiénes Somos
               </h3>
               <p className="text-gn-gray mb-6 leading-relaxed">
-                Somos un estudio jurídico con sede en la Ciudad de Buenos Aires, especializado en derecho penal y áreas conexas. Con más de 20 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas, en causas que van desde delitos económicos hasta conflictos familiares con aristas penales.
+                Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal y áreas conexas. Con más de 20 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas en CABA, provincia de Buenos Aires y a nivel federal en todo el país. Abordamos causas que van desde delitos económicos y estafas hasta conflictos familiares con aristas penales.
               </p>
               <p className="text-gn-gray mb-6 leading-relaxed">
                 Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, laborales o societarias. Entendemos que el conflicto tiene distintas aristas y por eso buscamos soluciones que resuelvan el problema de fondo.

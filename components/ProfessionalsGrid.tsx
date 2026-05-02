@@ -9,6 +9,7 @@ const professionals = [
   {
     name: "Jorge González Novillo",
     role: "Socio fundador",
+    altText: "Jorge González Novillo, abogado penalista y socio fundador del Estudio González Novillo en Buenos Aires",
     credentials: [
       "Abogado por la Universidad del Museo Social Argentino",
       "Especializado en Derecho Penal y Ciencias Penales en la Universidad de Palermo",
@@ -24,6 +25,7 @@ const professionals = [
   {
     name: "Matías González Novillo",
     role: "Socio",
+    altText: "Matías González Novillo, abogado penalista y socio del Estudio González Novillo en Buenos Aires",
     credentials: [
       "Egresado de la Facultad de Derecho de la UBA, con orientación en derecho penal",
       "Seis años en el Ministerio Público Fiscal de la CABA, donde alcanzó el cargo de Prosecretario Administrativo de Cámara",
@@ -72,8 +74,9 @@ export default function ProfessionalsGrid() {
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src={profesional.image}
-                  alt={profesional.name}
+                  alt={profesional.altText}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
               </div>

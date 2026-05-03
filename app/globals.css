@@ -15,6 +15,11 @@
   --accent: #161616;
 }
 
+/* Ensure html and body have pure white background */
+html, body {
+  background-color: #FFFFFF !important;
+}
+
 @layer base {
   body {
     @apply bg-gn-white text-gn-black antialiased;

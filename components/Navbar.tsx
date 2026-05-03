@@ -41,7 +41,7 @@ export default function Navbar() {
               alt="Estudio González Novillo - Abogados Penalistas en Buenos Aires"
               width={500}
               height={120}
-              className="h-20 md:h-24 w-auto mix-blend-multiply"
+              className="h-20 md:h-24 w-auto"
               priority
             />
           </Link>

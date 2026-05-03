@@ -59,9 +59,9 @@ export default function PracticeAreasUnified() {
   const Icon = currentArea.icon;
 
   return (
-    <div className="border border-gn-gray/20 bg-gn-white">
-      {/* Tabs */}
-      <div className="flex flex-row border-b border-gn-gray/20">
+    <div className="border border-gn-gray/20 bg-gn-white md:flex md:flex-row">
+      {/* Tabs - horizontal en móvil, vertical en desktop */}
+      <div className="flex flex-row md:flex-col border-b md:border-b-0 md:border-r border-gn-gray/20 md:w-64 md:shrink-0">
         {practiceAreas.map((area) => {
           const AreaIcon = area.icon;
           const isActive = activeArea === area.id;
@@ -70,7 +70,7 @@ export default function PracticeAreasUnified() {
             <button
               key={area.id}
               onClick={() => setActiveArea(area.id)}
-              className={`flex-1 flex flex-col items-center justify-center gap-1 md:gap-2 px-2 md:px-6 py-4 md:py-5 text-xs md:text-sm font-medium tracking-wide transition-all duration-300 border-r last:border-r-0 ${
+              className={`flex-1 md:flex-none flex flex-col items-center justify-center gap-1 px-2 py-4 md:px-6 md:py-5 text-xs md:text-sm font-medium tracking-wide transition-all duration-300 border-r md:border-r-0 md:border-b last:border-r-0 md:last:border-b-0 ${
                 isActive 
                   ? 'bg-gn-black text-gn-white' 
                   : 'bg-gn-white text-gn-gray hover:text-gn-black hover:bg-gn-black/5'
@@ -91,7 +91,7 @@ export default function PracticeAreasUnified() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3 }}
-          className="p-8 md:p-12"
+          className="p-8 md:p-12 md:flex-1"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left column - Description */}

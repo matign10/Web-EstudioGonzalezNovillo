@@ -6,7 +6,7 @@ export default function FloatingWhatsApp() {
       href="https://wa.me/message/7BQRXOHREOF4L1"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 md:hidden w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:bg-[#128C7E] transition-colors"
+      className="fixed bottom-6 right-6 z-50 md:hidden w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(37,211,102,0.4)] hover:bg-[#128C7E] hover:shadow-[0_4px_16px_rgba(37,211,102,0.5)] transition-all duration-300"
       aria-label="Contactar por WhatsApp"
     >
       <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

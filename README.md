@@ -1,78 +1,52 @@
-# ECEN - Estudio Jurídico
+# Estudio González Novillo
 
-Sitio web profesional para el estudio jurídico ECEN, desarrollado con Next.js 14, TypeScript, Tailwind CSS y Supabase.
+Sitio web profesional para el Estudio González Novillo (abogados penalistas, CABA), desarrollado con Next.js 14, TypeScript y Tailwind CSS.
 
 ## Características
 
-- Diseño moderno y responsive
-- Formulario de contacto con integración de email
-- Mapa de Google Maps integrado
-- Base de datos Supabase para almacenamiento de mensajes
-- Optimizado para SEO
-- Despliegue en Vercel
+- Diseño responsive
+- Mapa de ubicación embebido (iframe de Google Maps)
+- Botón flotante de WhatsApp
+- Optimizado para SEO (sitemap, robots, JSON-LD)
 
 ## Requisitos Previos
 
 - Node.js 18.17 o superior
-- npm o yarn
-- Cuenta de Supabase
-- Cuenta de Vercel
-- API Key de Google Maps
+- npm
 
 ## Instalación
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/tu-usuario/ecen-website.git
-cd ecen-website
+git clone https://github.com/matign10/paginaestudioecenfinal.git
+cd paginaestudioecenfinal
 ```
 
 2. Instala las dependencias:
 ```bash
 npm install
-# o
-yarn install
 ```
 
-3. Crea un archivo `.env.local` basado en `.env.example`:
-```bash
-cp .env.example .env.local
-```
-
-4. Configura las variables de entorno en `.env.local` con tus credenciales:
-- Supabase URL y Anon Key
-- Configuración SMTP para emails
-- Google Maps API Key
-
-5. Inicia el servidor de desarrollo:
+3. Inicia el servidor de desarrollo:
 ```bash
 npm run dev
-# o
-yarn dev
 ```
 
-6. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+4. Abre [http://localhost:3001](http://localhost:3001) en tu navegador.
 
 ## Despliegue en Vercel
 
-1. Crea una cuenta en [Vercel](https://vercel.com) si no tienes una.
-
-2. Conecta tu repositorio de GitHub con Vercel.
-
-3. En la configuración del proyecto en Vercel:
-   - Agrega todas las variables de entorno necesarias
-   - Configura el framework preset como Next.js
-   - Deploy!
+1. Conectá el repositorio de GitHub con Vercel.
+2. Configurá el framework preset como Next.js.
+3. Deploy.
 
 ## Estructura del Proyecto
 
 ```
-ecen-website/
-├── app/                 # Rutas y páginas de Next.js
-├── components/          # Componentes React reutilizables
-├── lib/                 # Utilidades y configuraciones
-├── public/             # Archivos estáticos
-└── styles/             # Estilos globales
+paginaestudioecenfinal/
+├── app/                # Rutas y páginas de Next.js
+├── components/         # Componentes React
+└── public/             # Archivos estáticos
 ```
 
 ## Tecnologías Utilizadas
@@ -80,18 +54,5 @@ ecen-website/
 - Next.js 14
 - TypeScript
 - Tailwind CSS
-- Supabase
-- Google Maps API
-- React Email
-
-## Contribución
-
-1. Fork el proyecto
-2. Crea tu Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push al branch (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+- Framer Motion
+- Lucide React

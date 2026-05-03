@@ -6,23 +6,13 @@
   /* Paleta de marca GN - Manual de Marca 2026 */
   --gn-black: #161616;
   --gn-gray: #9D9D9C;
-  --gn-white: #FFFFFF;
+  --gn-white: #F8F8F8;
   
   /* Semantic tokens */
-  --background: #FFFFFF;
+  --background: #F8F8F8;
   --foreground: #161616;
   --muted: #9D9D9C;
   --accent: #161616;
-}
-
-/* Logo background fix - make SVG background transparent */
-img[src*="logo-gn.svg"] {
-  background-color: transparent !important;
-}
-
-/* Ensure html and body have pure white background */
-html, body {
-  background-color: #FFFFFF !important;
 }
 
 @layer base {

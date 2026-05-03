@@ -60,8 +60,8 @@ export default function PracticeAreasUnified() {
 
   return (
     <div className="border border-gn-gray/20 bg-gn-white md:flex md:flex-row">
-      {/* Tabs - horizontal en móvil, vertical en desktop */}
-      <div className="flex flex-row md:flex-col border-b md:border-b-0 md:border-r border-gn-gray/20 md:w-64 md:shrink-0">
+      {/* Tabs - vertical en móvil y desktop */}
+      <div className="flex flex-col border-b md:border-b-0 md:border-r border-gn-gray/20 md:w-72 md:shrink-0">
         {practiceAreas.map((area) => {
           const AreaIcon = area.icon;
           const isActive = activeArea === area.id;
@@ -70,14 +70,14 @@ export default function PracticeAreasUnified() {
             <button
               key={area.id}
               onClick={() => setActiveArea(area.id)}
-              className={`flex-1 md:flex-none flex flex-col items-center justify-center gap-1 px-2 py-4 md:px-6 md:py-5 text-xs md:text-sm font-medium tracking-wide transition-all duration-300 border-r md:border-r-0 md:border-b last:border-r-0 md:last:border-b-0 ${
+              className={`flex items-center gap-3 px-4 py-4 md:px-6 md:py-5 text-sm font-medium tracking-wide transition-all duration-300 border-b last:border-b-0 ${
                 isActive 
                   ? 'bg-gn-black text-gn-white' 
                   : 'bg-gn-white text-gn-gray hover:text-gn-black hover:bg-gn-black/5'
               }`}
             >
-              <AreaIcon className="w-5 h-5" />
-              <span className="text-center leading-tight">{area.title}</span>
+              <AreaIcon className="w-5 h-5 flex-shrink-0" />
+              <span className="text-left leading-tight">{area.title}</span>
             </button>
           );
         })}

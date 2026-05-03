@@ -10,6 +10,7 @@ import ProfessionalsGrid from "@/components/ProfessionalsGrid";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import FadeInImage from "@/components/FadeInImage";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -256,8 +257,8 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="aspect-[4/3] overflow-hidden">
-                <Image
+              <div className="aspect-[4/3] overflow-hidden bg-gn-gray/10">
+                <FadeInImage
                   src="/images/foto-estudio.webp"
                   alt="Equipo de abogados penalistas del Estudio González Novillo en Buenos Aires"
                   width={800}

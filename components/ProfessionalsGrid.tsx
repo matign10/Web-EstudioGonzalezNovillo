@@ -40,9 +40,14 @@ const professionals = [
 
 export default function ProfessionalsGrid() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+  const handleImageLoad = (index: number) => {
+    setLoadedImages((prev) => ({ ...prev, [index]: true }));
   };
 
   return (
@@ -71,13 +76,17 @@ export default function ProfessionalsGrid() {
               onClick={() => toggleExpand(i)}
             >
               {/* Photo container */}
-              <div className="relative aspect-[3/4] overflow-hidden">
+              <div className="relative aspect-[3/4] overflow-hidden bg-gn-gray/10">
                 <Image
                   src={profesional.image}
                   alt={profesional.altText}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  onLoad={() => handleImageLoad(i)}
+                  className={`object-cover object-top group-hover:scale-105 transition-all duration-700 ease-out ${
+                    loadedImages[i] ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                  }`}
+                  style={{ transitionProperty: 'opacity, transform' }}
                 />
               </div>
 

@@ -10,7 +10,7 @@ const practiceAreas = [
     title: "Defensa Penal",
     icon: Shield,
     description: "Representamos a imputados en causas penales, con estrategias precisas desde el inicio, que buscan la mejor solución posible para sus intereses.",
-    expandedDescription: "Nuestro enfoque combina la defensa técnica con un análisis integral del conflicto, articulando acciones en sede penal, civil y societaria cuando el caso lo requiere.",
+    expandedDescription: "Nuestro enfoque combina la defensa técnica con un análisis integral del conflicto, articulando acciones en sede penal, civil, comercial y laboral, cuando el caso lo requiere.",
     services: [
       "Estafas, fraudes y delitos económicos",
       "Extorsión y coacción",
@@ -38,10 +38,10 @@ const practiceAreas = [
   },
   {
     id: 'derecho-civil-laboral',
-    title: "Derecho Civil y Laboral",
+    title: "Derecho Civil, Comercial y Laboral",
     icon: Briefcase,
-    description: "Trabajamos causas civiles y laborales conectadas con conflictos penales, o de manera autónoma según el caso.",
-    expandedDescription: "Muchos conflictos penales tienen raíz o consecuencias en el ámbito civil o laboral. Los abordamos de forma coordinada para resolver el problema de fondo.",
+    description: "Trabajamos causas civiles, comerciales y laborales conectadas con conflictos penales, o de manera autónoma según el caso.",
+    expandedDescription: "Muchos conflictos penales tienen raíz o consecuencias en el ámbito civil, comercial o laboral. Los abordamos de forma coordinada para resolver el problema de fondo.",
     services: [
       "Daños y perjuicios",
       "Conflictos contractuales",
@@ -61,7 +61,7 @@ export default function PracticeAreasUnified() {
   return (
     <div className="border border-gn-gray/20 bg-gn-white">
       {/* Tabs */}
-      <div className="flex flex-col md:flex-row border-b border-gn-gray/20">
+      <div className="flex flex-row border-b border-gn-gray/20">
         {practiceAreas.map((area) => {
           const AreaIcon = area.icon;
           const isActive = activeArea === area.id;
@@ -70,14 +70,14 @@ export default function PracticeAreasUnified() {
             <button
               key={area.id}
               onClick={() => setActiveArea(area.id)}
-              className={`flex-1 flex items-center justify-center gap-3 px-6 py-5 text-sm font-medium tracking-wide transition-all duration-300 border-b-2 md:border-b-0 md:border-r last:border-r-0 ${
+              className={`flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3 px-2 md:px-6 py-4 md:py-5 text-xs md:text-sm font-medium tracking-wide transition-all duration-300 border-r last:border-r-0 ${
                 isActive 
-                  ? 'bg-gn-black text-gn-white border-gn-black' 
-                  : 'bg-gn-white text-gn-gray hover:text-gn-black hover:bg-gn-black/5 border-transparent'
+                  ? 'bg-gn-black text-gn-white' 
+                  : 'bg-gn-white text-gn-gray hover:text-gn-black hover:bg-gn-black/5'
               }`}
             >
               <AreaIcon className="w-5 h-5" />
-              <span className="hidden sm:inline">{area.title}</span>
+              <span className="text-center leading-tight">{area.title}</span>
             </button>
           );
         })}

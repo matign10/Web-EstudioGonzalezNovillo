@@ -6,10 +6,10 @@
   height: 100%;
   overflow: hidden;
   z-index: 0;
-  background-color: #1a1a2e;
+  background-color: #161616;
 }
 
-/* Animated gradient layer */
+/* Animated gradient layer - now in grayscale matching brand */
 .gradientLayer {
   position: absolute;
   top: -50%;
@@ -18,14 +18,15 @@
   height: 200%;
   background: linear-gradient(
     45deg,
-    #1a1a2e 0%,
-    #16213e 25%,
-    #1a1a2e 50%,
-    #0f3460 75%,
-    #1a1a2e 100%
+    #161616 0%,
+    #1f1f1f 25%,
+    #161616 50%,
+    #252525 75%,
+    #161616 100%
   );
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
+  will-change: background-position;
 }
 
 @keyframes gradientShift {
@@ -50,12 +51,13 @@
   overflow: hidden;
 }
 
-/* Floating geometric shapes */
+/* Floating geometric shapes - now in grayscale */
 .shape {
   position: absolute;
-  border: 1px solid rgba(184, 134, 11, 0.2);
+  border: 1px solid rgba(157, 157, 156, 0.15);
   border-radius: 50%;
   animation: float 20s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .shape1 {
@@ -145,7 +147,7 @@
   overflow: hidden;
 }
 
-/* Animated diagonal lines */
+/* Animated diagonal lines - now in grayscale */
 .line {
   position: absolute;
   width: 1px;
@@ -153,10 +155,11 @@
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(184, 134, 11, 0.3) 50%,
+    rgba(157, 157, 156, 0.2) 50%,
     transparent 100%
   );
   animation: lineMove 8s linear infinite;
+  will-change: transform, opacity;
 }
 
 .line1 {
@@ -204,18 +207,19 @@
   overflow: hidden;
 }
 
-/* Glowing orbs */
+/* Glowing orbs - now in grayscale, reduced blur for performance */
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(40px);
   animation: pulse 10s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .orb1 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(184, 134, 11, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(157, 157, 156, 0.1) 0%, transparent 70%);
   top: -10%;
   right: -5%;
   animation-delay: 0s;
@@ -224,7 +228,7 @@
 .orb2 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(157, 157, 156, 0.08) 0%, transparent 70%);
   bottom: -5%;
   left: -5%;
   animation-delay: -5s;
@@ -233,7 +237,7 @@
 .orb3 {
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle, rgba(184, 134, 11, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(157, 157, 156, 0.1) 0%, transparent 70%);
   top: 40%;
   left: 30%;
   animation-delay: -3s;
@@ -250,7 +254,7 @@
   }
 }
 
-/* Grid pattern overlay */
+/* Grid pattern overlay - now in grayscale */
 .gridOverlay {
   position: absolute;
   top: 0;
@@ -258,10 +262,11 @@
   width: 100%;
   height: 100%;
   background-image:
-    linear-gradient(rgba(184, 134, 11, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(184, 134, 11, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(157, 157, 156, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157, 157, 156, 0.02) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: gridPulse 4s ease-in-out infinite;
+  will-change: opacity;
 }
 
 @keyframes gridPulse {
@@ -282,9 +287,9 @@
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(26, 26, 46, 0.3) 0%,
-    rgba(26, 26, 46, 0.5) 50%,
-    rgba(26, 26, 46, 0.7) 100%
+    rgba(22, 22, 22, 0.3) 0%,
+    rgba(22, 22, 22, 0.5) 50%,
+    rgba(22, 22, 22, 0.7) 100%
   );
   z-index: 1;
 }
@@ -338,5 +343,16 @@
 
   .gridOverlay {
     background-size: 30px 30px;
+  }
+}
+
+/* Pause animations when not visible (performance) */
+@media (prefers-reduced-motion: reduce) {
+  .gradientLayer,
+  .shape,
+  .line,
+  .orb,
+  .gridOverlay {
+    animation: none;
   }
 }

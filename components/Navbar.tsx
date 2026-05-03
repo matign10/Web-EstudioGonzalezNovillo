@@ -33,7 +33,7 @@ export default function Navbar() {
   return (
     <nav className="bg-gn-white fixed w-full z-20 top-0 start-0 border-b border-gn-gray/30">
       <div className="max-w-screen-xl mx-auto px-4">
-        <div className="flex items-center justify-between h-28 md:h-32">
+        <div className="flex items-center justify-between h-28 md:h-40">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
@@ -41,7 +41,7 @@ export default function Navbar() {
               alt="Estudio González Novillo - Abogados Penalistas en Buenos Aires"
               width={500}
               height={120}
-              className="h-20 md:h-32 w-auto"
+              className="h-20 md:h-40 w-auto"
               priority
             />
           </Link>

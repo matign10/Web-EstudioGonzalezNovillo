@@ -52,9 +52,9 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             placeholder=" "
-            className="floating-input"
+            className="peer w-full px-4 pt-6 pb-2 border border-gn-gray bg-white focus:outline-none focus:border-gn-black focus:ring-1 focus:ring-gn-black/20 transition-all duration-300"
           />
-          <label htmlFor="nombre" className="floating-label">
+          <label htmlFor="nombre" className="absolute left-4 top-4 text-gn-gray transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-black peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
             Nombre completo *
           </label>
         </div>
@@ -68,9 +68,9 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             placeholder=" "
-            className="floating-input"
+            className="peer w-full px-4 pt-6 pb-2 border border-gn-gray bg-white focus:outline-none focus:border-gn-black focus:ring-1 focus:ring-gn-black/20 transition-all duration-300"
           />
-          <label htmlFor="email" className="floating-label">
+          <label htmlFor="email" className="absolute left-4 top-4 text-gn-gray transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-black peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
             Email *
           </label>
         </div>
@@ -83,9 +83,9 @@ export default function ContactForm() {
             value={formData.telefono}
             onChange={handleChange}
             placeholder=" "
-            className="floating-input"
+            className="peer w-full px-4 pt-6 pb-2 border border-gn-gray bg-white focus:outline-none focus:border-gn-black focus:ring-1 focus:ring-gn-black/20 transition-all duration-300"
           />
-          <label htmlFor="telefono" className="floating-label">
+          <label htmlFor="telefono" className="absolute left-4 top-4 text-gn-gray transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-black peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
             Teléfono
           </label>
         </div>
@@ -99,9 +99,9 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             placeholder=" "
-            className="floating-input resize-none"
+            className="peer w-full px-4 pt-6 pb-2 border border-gn-gray bg-white focus:outline-none focus:border-gn-black focus:ring-1 focus:ring-gn-black/20 transition-all duration-300 resize-none"
           />
-          <label htmlFor="consulta" className="floating-label">
+          <label htmlFor="consulta" className="absolute left-4 top-4 text-gn-gray transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-black peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
             Tu consulta *
           </label>
         </div>

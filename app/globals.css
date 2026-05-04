@@ -38,14 +38,7 @@
     @apply bg-transparent border border-gn-gray text-gn-black px-6 py-3 font-medium hover:border-gn-black transition-all duration-300;
   }
 
-  /* Floating label styles */
-  .floating-input {
-    @apply w-full px-4 pt-6 pb-2 border border-gn-gray bg-white focus:outline-none focus:border-gn-black focus:ring-1 focus:ring-gn-black/20 transition-all duration-300 peer;
-  }
 
-  .floating-label {
-    @apply absolute left-4 top-4 text-gn-gray transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-black peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2;
-  }
 }
 
 /* Hero section */

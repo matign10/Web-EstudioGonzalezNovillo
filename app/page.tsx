@@ -1,7 +1,5 @@
 'use client';
 
-import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import BackgroundImage from "@/components/BackgroundVideo";
@@ -11,20 +9,8 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import FadeInImage from "@/components/FadeInImage";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
+import ContactForm from "@/components/ContactForm";
+import PressCarousel from "@/components/PressCarousel";
 
 // Smooth scroll function
 const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -187,47 +173,12 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {[
-              {
-                source: "Perfil",
-                title: "Habló el abogado de Florencia Cocucci, la supuesta novia de Nisman: \"Está aterrada\"",
-                url: "https://www.perfil.com/noticias/politica/hablo-el-abogado-de-florencia-cocucci-la-supuesta-novia-de-nisman-esta-aterrada-0303-0051.phtml"
-              },
-              {
-                source: "Diario Popular",
-                title: "Abogado de Larsson: \"La denuncia es por extorsión y no por abuso\"",
-                url: "https://www.diariopopular.com.ar/espectaculos/abogado-larsson-la-denuncia-es-extorsion-y-no-abuso-n136219"
-              },
-              {
-                source: "Infobae",
-                title: "Los detalles de la segunda denuncia penal a Marcelo Moretti, presentada por un dirigente de San Lorenzo que estuvo en su espacio",
-                url: "https://www.infobae.com/deportes/2025/04/23/los-detalles-de-la-segunda-denuncia-penal-a-marcelo-moretti-presentada-por-un-dirigente-de-san-lorenzo-que-estuvo-en-su-espacio/"
-              }
-            ].map((noticia, i) => (
-              <motion.a
-                key={i}
-                href={noticia.url}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                variants={fadeInUp}
-                className="group block"
-              >
-                <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-300 hover:border-gn-black hover:shadow-lg">
-                  <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4">
-                    {noticia.source}
-                  </span>
-                  <h3 className="text-lg font-display text-gn-black group-hover:text-gn-gray transition-colors leading-snug">
-                    {noticia.title}
-                  </h3>
-                </div>
-              </motion.a>
-            ))}
+            <PressCarousel />
           </motion.div>
         </div>
       </section>
@@ -312,7 +263,8 @@ export default function Home() {
             <div className="section-divider" />
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Contact Info and Form */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -384,27 +336,37 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Map */}
+            {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="w-full h-full min-h-[400px] overflow-hidden border border-gn-gray/20">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3284.1714080357265!2d-58.3891075!3d-34.5998269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac76e4be365%3A0xb3558178c7ed599b!2sUruguay%20763%2C%20C1015ABO%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1777664996811!5m2!1ses!2sar" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0, minHeight: '400px' }} 
-                  allowFullScreen 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Ubicación del Estudio González Novillo"
-                />
-              </div>
+              <ContactForm />
             </motion.div>
           </div>
+
+          {/* Map - Full Width Below */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="w-full h-[400px] overflow-hidden border border-gn-gray/20">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3284.1714080357265!2d-58.3891075!3d-34.5998269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac76e4be365%3A0xb3558178c7ed599b!2sUruguay%20763%2C%20C1015ABO%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1777664996811!5m2!1ses!2sar" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Ubicación del Estudio González Novillo"
+              />
+            </div>
+          </motion.div>
         </div>
       </section>
 

@@ -4,40 +4,44 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const noticias = [
+const casos = [
   {
-    source: "Perfil",
-    title: "Habló el abogado de Florencia Cocucci, la supuesta novia de Nisman: \"Está aterrada\"",
-    url: "https://www.perfil.com/noticias/politica/hablo-el-abogado-de-florencia-cocucci-la-supuesta-novia-de-nisman-esta-aterrada-0303-0051.phtml"
+    court: "Cámara Nacional de Apelaciones en lo Criminal",
+    title: "Sobreseimiento por prescripción en causa de estafa",
+    description: "Se logró el sobreseimiento del imputado por prescripción de la acción penal en una causa por estafa procesal.",
+    url: "#"
   },
   {
-    source: "Diario Popular",
-    title: "Abogado de Larsson: \"La denuncia es por extorsión y no por abuso\"",
-    url: "https://www.diariopopular.com.ar/espectaculos/abogado-larsson-la-denuncia-es-extorsion-y-no-abuso-n136219"
+    court: "Tribunal Oral en lo Criminal Federal",
+    title: "Absolución en causa por contrabando",
+    description: "Absolución del imputado en juicio oral por falta de pruebas suficientes.",
+    url: "#"
   },
   {
-    source: "Infobae",
-    title: "Los detalles de la segunda denuncia penal a Marcelo Moretti, presentada por un dirigente de San Lorenzo que estuvo en su espacio",
-    url: "https://www.infobae.com/deportes/2025/04/23/los-detalles-de-la-segunda-denuncia-penal-a-marcelo-moretti-presentada-por-un-dirigente-de-san-lorenzo-que-estuvo-en-su-espacio/"
+    court: "Juzgado Nacional en lo Criminal y Correccional",
+    title: "Archivo de causa por amenazas",
+    description: "Se logró el archivo de la causa por atipicidad de la conducta denunciada.",
+    url: "#"
   },
   {
-    source: "Radio Zónica",
-    title: "Jorge Novillo: 'Moretti cometió un delito y puede haber un concurso real'",
-    url: "https://larz.com.ar/noticias/jorge-novillo-moretti-cometio-un-delito-y-puede-haber-un-concurso-real/"
+    court: "Cámara de Apelaciones en lo Penal Económico",
+    title: "Revocación de procesamiento por evasión",
+    description: "La Cámara revocó el procesamiento dictado en primera instancia por falta de mérito.",
+    url: "#"
   },
   {
-    source: "YouTube - Visión 7",
-    title: "Visión 7 - La muerte de Nisman: Declararon la secretaria y la modelo Florencia Cocucci",
-    url: "https://www.youtube.com/watch?v=Wvmvu1M0qOM"
+    court: "Tribunal Oral en lo Criminal",
+    title: "Pena reducida en caso de lesiones",
+    description: "Se obtuvo una significativa reducción de pena mediante acuerdo de juicio abreviado.",
+    url: "#"
   }
 ];
 
-export default function PressCarousel() {
+export default function CasesCarousel() {
   const [startIndex, setStartIndex] = useState(0);
   
-  // Calculate how many items we can show (3 on desktop, 2 on tablet, 1 on mobile)
   const itemsPerPage = 3;
-  const maxStartIndex = Math.max(0, noticias.length - itemsPerPage);
+  const maxStartIndex = Math.max(0, casos.length - itemsPerPage);
   
   const handlePrev = () => {
     setStartIndex(prev => Math.max(0, prev - 1));
@@ -47,7 +51,7 @@ export default function PressCarousel() {
     setStartIndex(prev => Math.min(maxStartIndex, prev + 1));
   };
   
-  const visibleNoticias = noticias.slice(startIndex, startIndex + itemsPerPage);
+  const visibleCasos = casos.slice(startIndex, startIndex + itemsPerPage);
   
   const canGoPrev = startIndex > 0;
   const canGoNext = startIndex < maxStartIndex;
@@ -63,7 +67,7 @@ export default function PressCarousel() {
             ? 'border-gn-black text-gn-black hover:bg-gn-black hover:text-gn-white'
             : 'border-gn-gray/30 text-gn-gray/30 cursor-not-allowed'
         }`}
-        aria-label="Ver noticias anteriores"
+        aria-label="Ver casos anteriores"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
@@ -77,7 +81,7 @@ export default function PressCarousel() {
             ? 'border-gn-black text-gn-black hover:bg-gn-black hover:text-gn-white'
             : 'border-gn-gray/30 text-gn-gray/30 cursor-not-allowed'
         }`}
-        aria-label="Ver más noticias"
+        aria-label="Ver más casos"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
@@ -85,10 +89,10 @@ export default function PressCarousel() {
       {/* Cards Container */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-8 lg:mx-0">
         <AnimatePresence mode="popLayout">
-          {visibleNoticias.map((noticia, i) => (
+          {visibleCasos.map((caso, i) => (
             <motion.a
-              key={noticia.url}
-              href={noticia.url}
+              key={caso.title}
+              href={caso.url}
               target="_blank"
               rel="noopener noreferrer nofollow"
               initial={{ opacity: 0, x: 20 }}
@@ -97,13 +101,16 @@ export default function PressCarousel() {
               transition={{ duration: 0.3, delay: i * 0.1 }}
               className="group block"
             >
-              <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-300 hover:border-gn-black hover:shadow-lg min-h-[160px] flex flex-col">
+              <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-300 hover:border-gn-black hover:shadow-lg min-h-[200px] flex flex-col">
                 <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4 self-start">
-                  {noticia.source}
+                  {caso.court}
                 </span>
-                <h3 className="text-lg font-display text-gn-black group-hover:text-gn-gray transition-colors leading-snug flex-1">
-                  {noticia.title}
+                <h3 className="text-lg font-display text-gn-black group-hover:text-gn-gray transition-colors leading-snug mb-2">
+                  {caso.title}
                 </h3>
+                <p className="text-sm text-gn-gray leading-relaxed flex-1">
+                  {caso.description}
+                </p>
               </div>
             </motion.a>
           ))}

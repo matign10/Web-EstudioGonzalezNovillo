@@ -11,6 +11,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import FadeInImage from "@/components/FadeInImage";
 import ContactForm from "@/components/ContactForm";
 import PressCarousel from "@/components/PressCarousel";
+import CasesCarousel from "@/components/CasesCarousel";
 
 // Smooth scroll function
 const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -179,6 +180,34 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <PressCarousel />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Casos */}
+      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-gray/20" id="casos">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Resultados</span>
+            <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
+              Casos
+            </h2>
+            <div className="section-divider" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <CasesCarousel />
           </motion.div>
         </div>
       </section>
@@ -354,9 +383,9 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="w-full h-[400px] overflow-hidden border border-gn-gray/20">
+            <div className="w-full h-[200px] overflow-hidden border border-gn-gray/20">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3284.1714080357265!2d-58.3891075!3d-34.5998269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac76e4be365%3A0xb3558178c7ed599b!2sUruguay%20763%2C%20C1015ABO%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1777664996811!5m2!1ses!2sar" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.171403982098!2d-58.39168492425887!3d-34.59982967295472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac76e4be365%3A0x6c95de0ccce71c1!2sUruguay%20763%2C%20C1015ABO%20CABA%2C%20Argentina!5e0!3m2!1ses!2sar!4v1714857600000!5m2!1ses!2sar" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 

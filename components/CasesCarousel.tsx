@@ -1,47 +1,82 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { supabase, Caso } from '@/lib/supabase';
 
-const casos = [
+// Datos de fallback por si no hay conexión o no hay datos en la BD
+const fallbackCasos = [
   {
-    court: "Cámara Nacional de Apelaciones en lo Criminal",
-    title: "Sobreseimiento por prescripción en causa de estafa",
-    description: "Se logró el sobreseimiento del imputado por prescripción de la acción penal en una causa por estafa procesal.",
-    url: "#"
+    id: '1',
+    tipo_resolucion: "Sobreseimiento",
+    tribunal: "Cámara Nacional de Apelaciones en lo Criminal",
+    titulo: "Sobreseimiento por prescripción en causa de estafa",
+    descripcion: "Se logró el sobreseimiento del imputado por prescripción de la acción penal en una causa por estafa procesal.",
+    pdf_url: undefined,
+    visible: true,
+    created_at: '',
+    updated_at: ''
   },
   {
-    court: "Tribunal Oral en lo Criminal Federal",
-    title: "Absolución en causa por contrabando",
-    description: "Absolución del imputado en juicio oral por falta de pruebas suficientes.",
-    url: "#"
+    id: '2',
+    tipo_resolucion: "Absolución",
+    tribunal: "Tribunal Oral en lo Criminal Federal",
+    titulo: "Absolución en causa por contrabando",
+    descripcion: "Absolución del imputado en juicio oral por falta de pruebas suficientes.",
+    pdf_url: undefined,
+    visible: true,
+    created_at: '',
+    updated_at: ''
   },
   {
-    court: "Juzgado Nacional en lo Criminal y Correccional",
-    title: "Archivo de causa por amenazas",
-    description: "Se logró el archivo de la causa por atipicidad de la conducta denunciada.",
-    url: "#"
-  },
-  {
-    court: "Cámara de Apelaciones en lo Penal Económico",
-    title: "Revocación de procesamiento por evasión",
-    description: "La Cámara revocó el procesamiento dictado en primera instancia por falta de mérito.",
-    url: "#"
-  },
-  {
-    court: "Tribunal Oral en lo Criminal",
-    title: "Pena reducida en caso de lesiones",
-    description: "Se obtuvo una significativa reducción de pena mediante acuerdo de juicio abreviado.",
-    url: "#"
+    id: '3',
+    tipo_resolucion: "Archivo",
+    tribunal: "Juzgado Nacional en lo Criminal y Correccional",
+    titulo: "Archivo de causa por amenazas",
+    descripcion: "Se logró el archivo de la causa por atipicidad de la conducta denunciada.",
+    pdf_url: undefined,
+    visible: true,
+    created_at: '',
+    updated_at: ''
   }
 ];
 
 const ITEMS_VISIBLE = 3;
 
 export default function CasesCarousel() {
+  const [casos, setCasos] = useState<Caso[]>(fallbackCasos);
+  const [isLoading, setIsLoading] = useState(true);
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+
+  useEffect(() => {
+    async function fetchCasos() {
+      try {
+        const { data, error } = await supabase
+          .from('casos')
+          .select('*')
+          .eq('visible', true)
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error('[v0] Error fetching casos:', error);
+          return;
+        }
+
+        if (data && data.length > 0) {
+          setCasos(data);
+        }
+      } catch (err) {
+        console.error('[v0] Error:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchCasos();
+  }, []);
+
   const total = casos.length;
 
   const handlePrev = () => {
@@ -54,7 +89,7 @@ export default function CasesCarousel() {
     setIndex(prev => (prev + 1) % total);
   };
 
-  const visibleCasos = Array.from({ length: ITEMS_VISIBLE }, (_, i) =>
+  const visibleCasos = Array.from({ length: Math.min(ITEMS_VISIBLE, total) }, (_, i) =>
     casos[(index + i) % total]
   );
 
@@ -63,6 +98,14 @@ export default function CasesCarousel() {
     center: { opacity: 1, x: 0 },
     exit: (dir: number) => ({ opacity: 0, x: dir * -60 }),
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center py-16">
+        <div className="w-8 h-8 border-2 border-gn-black border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="relative">
@@ -88,11 +131,8 @@ export default function CasesCarousel() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-8 lg:mx-0 overflow-hidden">
         <AnimatePresence mode="popLayout" custom={direction}>
           {visibleCasos.map((caso, i) => (
-            <motion.a
-              key={`${caso.title}-${(index + i) % total}`}
-              href={caso.url}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
+            <motion.div
+              key={`${caso.id}-${(index + i) % total}`}
               custom={direction}
               variants={variants}
               initial="enter"
@@ -101,18 +141,19 @@ export default function CasesCarousel() {
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="group block"
             >
-              <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-500 hover:border-gn-black hover:shadow-lg min-h-[200px] flex flex-col">
-                <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4 self-start">
-                  {caso.court}
-                </span>
-                <h3 className="text-lg font-display text-gn-black group-hover:text-gn-gray transition-colors duration-500 leading-snug mb-2">
-                  {caso.title}
-                </h3>
-                <p className="text-sm text-gn-gray leading-relaxed flex-1">
-                  {caso.description}
-                </p>
-              </div>
-            </motion.a>
+              {caso.pdf_url ? (
+                <a
+                  href={caso.pdf_url}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="block h-full"
+                >
+                  <CasoCard caso={caso} hasLink />
+                </a>
+              ) : (
+                <CasoCard caso={caso} hasLink={false} />
+              )}
+            </motion.div>
           ))}
         </AnimatePresence>
       </div>
@@ -130,6 +171,36 @@ export default function CasesCarousel() {
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+function CasoCard({ caso, hasLink }: { caso: Caso; hasLink: boolean }) {
+  return (
+    <div className={`h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-500 min-h-[200px] flex flex-col ${hasLink ? 'hover:border-gn-black hover:shadow-lg' : ''}`}>
+      <div className="flex gap-2 mb-4">
+        <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide">
+          {caso.tipo_resolucion}
+        </span>
+        {caso.tribunal && (
+          <span className="inline-block px-3 py-1 bg-gn-gray/10 text-gn-gray text-xs font-medium tracking-wide">
+            {caso.tribunal}
+          </span>
+        )}
+      </div>
+      <h3 className={`text-lg font-display text-gn-black leading-snug mb-2 ${hasLink ? 'group-hover:text-gn-gray transition-colors duration-500' : ''}`}>
+        {caso.titulo}
+      </h3>
+      {caso.descripcion && (
+        <p className="text-sm text-gn-gray leading-relaxed flex-1">
+          {caso.descripcion}
+        </p>
+      )}
+      {hasLink && (
+        <p className="text-xs text-gn-black font-medium mt-4 underline underline-offset-2">
+          Ver resolución
+        </p>
+      )}
     </div>
   );
 }

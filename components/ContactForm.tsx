@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { supabase, ContactSubmission } from '@/lib/supabase';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -21,14 +22,29 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
     
-    // TODO: Implement backend connection
-    // For now, simulate a submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const submission: ContactSubmission = {
+        nombre: formData.nombre,
+        email: formData.email,
+        telefono: formData.telefono || undefined,
+        consulta: formData.consulta
+      };
+
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([submission]);
+
+      if (error) {
+        console.error('[v0] Supabase error:', error);
+        throw error;
+      }
+
       setSubmitStatus('success');
       setFormData({ nombre: '', email: '', telefono: '', consulta: '' });
-    } catch {
+    } catch (err) {
+      console.error('[v0] Form submission error:', err);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

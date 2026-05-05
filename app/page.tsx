@@ -315,9 +315,14 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-gn-black mb-1">Dirección</h4>
-                      <p className="text-gn-gray text-sm">
+                      <a
+                        href="https://maps.google.com/?q=Uruguay+763,+CABA,+Argentina"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gray transition-colors"
+                      >
                         Uruguay 763, C1013<br />CABA, Argentina
-                      </p>
+                      </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -376,27 +381,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Map - Aligned left, same width as Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-          >
-            <div className="h-[400px] overflow-hidden border border-gn-gray/20">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.171403982098!2d-58.39168492425887!3d-34.59982967295472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac76e4be365%3A0x6c95de0ccce71c1!2sUruguay%20763%2C%20C1015ABO%20CABA%2C%20Argentina!5e0!3m2!1ses!2sar!4v1714857600000!5m2!1ses!2sar" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación del Estudio González Novillo"
-              />
-            </div>
-          </motion.div>
+
         </div>
       </section>
 

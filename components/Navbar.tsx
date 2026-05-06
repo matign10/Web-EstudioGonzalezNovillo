@@ -11,6 +11,7 @@ const navigation = [
   { name: 'Áreas de Práctica', href: '#areas' },
   { name: 'Profesionales', href: '#profesionales' },
   { name: 'Prensa', href: '#prensa' },
+  { name: 'Casos', href: '#casos' },
   { name: 'Nosotros', href: '#nosotros' },
   { name: 'Contacto', href: '#contacto' },
 ];
@@ -31,7 +32,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gn-white fixed w-full z-20 top-0 start-0 border-b border-gn-gray/30">
+    <nav className="bg-gn-white dark:bg-black fixed w-full z-20 top-0 start-0 border-b border-gn-gray/30 dark:border-gn-gray/20">
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="flex items-center justify-between h-28 md:h-40">
           {/* Logo */}
@@ -41,7 +42,7 @@ export default function Navbar() {
               alt="Estudio González Novillo - Abogados Penalistas en Buenos Aires"
               width={500}
               height={120}
-              className="h-20 md:h-40 w-auto"
+              className="h-20 md:h-40 w-auto dark:invert"
               priority
             />
           </Link>
@@ -55,8 +56,8 @@ export default function Navbar() {
                 onClick={(e) => handleClick(e, item.href)}
                 className={`text-sm font-medium tracking-wide transition-colors duration-300 ${
                   pathname === item.href
-                    ? 'text-gn-black'
-                    : 'text-gn-gray hover:text-gn-black'
+                    ? 'text-gn-black dark:text-gn-white'
+                    : 'text-gn-gray dark:text-gn-gray/70 hover:text-gn-black dark:hover:text-gn-white'
                 }`}
               >
                 {item.name}
@@ -82,7 +83,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gn-black"
+            className="md:hidden p-2 text-gn-black dark:text-gn-white"
             aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
             {isMobileMenuOpen ? (
@@ -98,7 +99,7 @@ export default function Navbar() {
       <div 
         className={`${
           isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-        } md:hidden bg-gn-white border-t border-gn-gray/30 overflow-hidden transition-all duration-300`}
+        } md:hidden bg-gn-white dark:bg-black border-t border-gn-gray/30 dark:border-gn-gray/20 overflow-hidden transition-all duration-300`}
       >
         <div className="px-4 py-4 space-y-1">
           {navigation.map((item) => (
@@ -108,8 +109,8 @@ export default function Navbar() {
               onClick={(e) => handleClick(e, item.href)}
               className={`block px-4 py-3 text-sm font-medium transition-colors duration-300 ${
                 pathname === item.href
-                  ? 'text-gn-black bg-gn-black/5'
-                  : 'text-gn-gray hover:text-gn-black hover:bg-gn-black/5'
+                  ? 'text-gn-black dark:text-gn-white bg-gn-black/5 dark:bg-gn-white/5'
+                  : 'text-gn-gray dark:text-gn-gray/70 hover:text-gn-black dark:hover:text-gn-white hover:bg-gn-black/5 dark:hover:bg-gn-white/5'
               }`}
             >
               {item.name}

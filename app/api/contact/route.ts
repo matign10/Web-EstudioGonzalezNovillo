@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
           from: "onboarding@resend.dev",
-          to: "gonzaleznovilloabogados@gmail.com",
+          to: "matias.gonzalez.novillo@gmail.com",
           subject: `Nuevo mensaje de contacto de ${nombre}`,
           html: emailBody,
           reply_to: email,

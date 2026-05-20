@@ -186,3 +186,21 @@ input:focus, textarea:focus, select:focus {
 ::selection {
   background-color: rgba(22, 22, 22, 0.15);
 }
+
+/* Logo watermark for hero */
+.hero-watermark {
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  transform: translateY(-50%);
+  opacity: 0.08;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .hero-watermark {
+    right: -10%;
+    opacity: 0.05;
+  }
+}

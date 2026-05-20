@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import BackgroundImage from "@/components/BackgroundVideo";
@@ -29,6 +30,20 @@ export default function Home() {
       <section className="relative min-h-screen overflow-hidden bg-gn-black">
         <BackgroundImage />
         <div className="absolute inset-0 hero-pattern z-[1]" />
+        
+        {/* Logo Watermark */}
+        <div className="hero-watermark">
+          <Image
+            src="/images/logo-gn.svg"
+            alt=""
+            width={600}
+            height={600}
+            className="w-96 h-auto"
+            priority
+            aria-hidden="true"
+          />
+        </div>
+
         <div className="relative z-10 max-w-screen-xl mx-auto px-4 h-screen flex items-center">
           <motion.div
             className="max-w-2xl text-gn-white"

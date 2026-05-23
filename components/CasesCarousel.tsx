@@ -112,7 +112,7 @@ export default function CasesCarousel() {
       {/* Left Arrow */}
       <button
         onClick={handlePrev}
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
+        className="absolute left-0 top-[210px] -translate-y-1/2 -translate-x-4 lg:-translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
         aria-label="Ver casos anteriores"
       >
         <ChevronLeft className="w-5 h-5" />
@@ -121,7 +121,7 @@ export default function CasesCarousel() {
       {/* Right Arrow */}
       <button
         onClick={handleNext}
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
+        className="absolute right-0 top-[210px] -translate-y-1/2 translate-x-4 lg:translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
         aria-label="Ver más casos"
       >
         <ChevronRight className="w-5 h-5" />
@@ -177,7 +177,7 @@ export default function CasesCarousel() {
 
 function CasoCard({ caso, hasLink }: { caso: Caso; hasLink: boolean }) {
   return (
-    <div className={`h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-500 min-h-[200px] flex flex-col ${hasLink ? 'hover:border-gn-black hover:shadow-lg' : ''}`}>
+    <div className={`bg-gn-white border border-gn-gray/20 p-6 transition-all duration-500 h-[420px] flex flex-col overflow-hidden ${hasLink ? 'hover:border-gn-black hover:shadow-lg' : ''}`}>
       <div className="flex gap-2 mb-4">
         <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide">
           {caso.tipo_resolucion}

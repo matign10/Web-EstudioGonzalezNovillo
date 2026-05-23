@@ -156,36 +156,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Prensa */}
-      <section className="py-24 md:py-32 bg-gn-white" id="prensa">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Repercusión</span>
-            <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
-              Prensa
-            </h2>
-            <div className="section-divider" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <PressCarousel />
-          </motion.div>
-        </div>
-      </section>
-
       {/* Casos */}
-      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-gray/20" id="casos">
+      <section className="py-24 md:py-32 bg-gn-white" id="casos">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -208,6 +180,34 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <CasesCarousel />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Prensa */}
+      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-gray/20" id="prensa">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Repercusión</span>
+            <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
+              Prensa
+            </h2>
+            <div className="section-divider" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <PressCarousel />
           </motion.div>
         </div>
       </section>
@@ -239,7 +239,7 @@ export default function Home() {
             >
               <div className="aspect-[4/3] overflow-hidden bg-gn-gray/10">
                 <FadeInImage
-                  src="/images/foto-estudio.webp"
+                  src="/images/fotos/foto estudio Coco y Mati 2.webp"
                   alt="Equipo de abogados penalistas del Estudio González Novillo en Buenos Aires"
                   width={800}
                   height={600}

@@ -10,8 +10,8 @@ const navigation = [
   { name: 'Inicio', href: '/' },
   { name: 'Áreas de Práctica', href: '#areas' },
   { name: 'Profesionales', href: '#profesionales' },
-  { name: 'Prensa', href: '#prensa' },
   { name: 'Casos', href: '#casos' },
+  { name: 'Prensa', href: '#prensa' },
   { name: 'Nosotros', href: '#nosotros' },
   { name: 'Contacto', href: '#contacto' },
 ];

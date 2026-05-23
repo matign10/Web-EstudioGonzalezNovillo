@@ -20,7 +20,7 @@ const professionals = [
       "Árbitro Internacional designado por la Entidad Binacional Yacyretá ante la Corte Internacional de Arbitraje de la Cámara de Comercio Internacional",
       "Miembro fundador del centro de estudios \"Economía y Delito\" de la Facultad de Ciencias Económicas de la UBA, donde preside la comisión de delitos informáticos"
     ],
-    image: "/images/coco.webp"
+    image: "/images/fotos/imagen-jorge-cv.webp"
   },
   {
     name: "Matías González Novillo",
@@ -34,7 +34,7 @@ const professionals = [
       "Cursa el Programa de Actualización en Derecho Penal Económico de la UBA",
       "Ejerce de forma independiente desde 2023"
     ],
-    image: "/images/mati.webp"
+    image: "/images/fotos/imagen-mati-cv.webp"
   }
 ];
 

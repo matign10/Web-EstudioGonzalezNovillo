@@ -346,8 +346,8 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-gn-black mb-1">Email</h4>
-                      <a href="mailto:gonzaleznovilloabogados@gmail.com" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
-                        gonzaleznovilloabogados@gmail.com
+                      <a href="mailto:estudio@gonzaleznovilloabogados.com" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
+                        estudio@gonzaleznovilloabogados.com
                       </a>
                     </div>
                   </div>

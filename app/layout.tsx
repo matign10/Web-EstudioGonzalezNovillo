@@ -88,7 +88,7 @@ export default function RootLayout({
     "description": "Estudio jurídico especializado en derecho penal. Defensa de imputados y representación de víctimas en causas penales.",
     "url": "https://gonzaleznovillo.com",
     "telephone": "+54 9 11 5476 3721",
-    "email": "gonzaleznovilloabogados@gmail.com",
+    "email": "estudio@gonzaleznovilloabogados.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Uruguay 763",

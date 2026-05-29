@@ -43,7 +43,7 @@ export default function Home() {
               className="flex items-center gap-3 mb-6"
             >
               <div className="w-12 h-[1px] bg-gn-gray" />
-              <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Derecho penal y áreas conexas</span>
+              <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Derecho penal</span>
             </motion.div>
             <motion.h1
               className="text-4xl md:text-6xl lg:text-7xl font-display mb-6 tracking-tight leading-[1.1] text-balance"
@@ -61,7 +61,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Asesoramos y representamos a imputados y víctimas en causas penales de distinta complejidad.
+              Defensa penal y querella en CABA, provincia de Buenos Aires y el fuero federal. Acompañamiento directo en todas las etapas del proceso.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4"
@@ -262,10 +262,10 @@ export default function Home() {
                 Quiénes Somos
               </h3>
               <p className="text-gn-gray mb-6 leading-relaxed">
-                Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal y áreas conexas. Con más de 20 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas en CABA, provincia de Buenos Aires y a nivel federal en todo el país. Abordamos causas que van desde delitos económicos y estafas hasta conflictos familiares con aristas penales.
+                Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal. Con más de 20 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas en CABA, provincia de Buenos Aires y a nivel federal en todo el país. Abordamos causas que van desde delitos económicos y estafas hasta conflictos familiares con aristas penales.
               </p>
               <p className="text-gn-gray mb-6 leading-relaxed">
-                Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, laborales o societarias. Entendemos que el conflicto tiene distintas aristas y por eso buscamos soluciones que resuelvan el problema de fondo.
+                Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, comerciales o laborales, en conjunto con estudios especializados con los que trabajamos habitualmente — Estudio Echavarría Coll (civil y comercial) y Espinosa Paz (laboral). Entendemos que el conflicto tiene distintas aristas y por eso buscamos soluciones que resuelvan el problema de fondo.
               </p>
               <p className="text-gn-gray leading-relaxed">
                 Trabajamos con compromiso, claridad y un trato cercano. Sabemos que cada caso afecta la vida de una persona, y eso guía nuestra forma de trabajar.
@@ -346,7 +346,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-gn-black mb-1">Email</h4>
-                      <a href="mailto:estudio@gonzaleznovilloabogados.com" className="text-gn-gray text-sm hover:text-gn-black transition-colors">
+                      <a href="mailto:estudio@gonzaleznovilloabogados.com" className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gray transition-colors break-all">
                         estudio@gonzaleznovilloabogados.com
                       </a>
                     </div>

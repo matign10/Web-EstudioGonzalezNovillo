@@ -27,6 +27,10 @@ export default function Navbar() {
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
+    } else if (href === '/') {
+      // Already on home — smooth scroll to top instead of hard navigation
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     setIsMobileMenuOpen(false);
   };
@@ -38,7 +42,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/logo-gn.svg"
+              src="/images/nuevologoestudio.webp"
               alt="Estudio González Novillo - Abogados Penalistas en Buenos Aires"
               width={500}
               height={120}

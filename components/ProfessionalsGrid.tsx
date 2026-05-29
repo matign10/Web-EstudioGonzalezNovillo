@@ -32,6 +32,7 @@ const professionals = [
       "Conocimiento del funcionamiento del sistema penal desde adentro",
       "Cursa la Especialización en Justicia Constitucional y Derechos Humanos en el Instituto para el Desarrollo Constitucional (IDC)",
       "Cursa el Programa de Actualización en Derecho Penal Económico de la UBA",
+      "Ayudante de Segunda en la materia \"Elementos del Derecho Penal\", de la Universidad de Buenos Aires, cátedra Slokar-Vega",
       "Ejerce de forma independiente desde 2023"
     ],
     image: "/images/fotos/imagen-mati-cv.webp"

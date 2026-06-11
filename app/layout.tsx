@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -17,7 +17,14 @@ const playfair = Playfair_Display({
   display: "swap"
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#161616",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gonzaleznovillo.com"),
   title: "Estudio González Novillo | Abogados Penalistas en Buenos Aires",
   description: "Estudio jurídico especializado en derecho penal en CABA, Buenos Aires y todo el país. Defensa penal, querella, delitos económicos, estafas y violencia de género. Más de 20 años de experiencia.",
   keywords: [
@@ -71,8 +78,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://gonzaleznovillo.com",
   },
-  verification: {
-    google: "your-google-verification-code",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/logo-gn.svg", type: "image/svg+xml" },
+    ],
   },
 };
 
@@ -152,10 +162,6 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${poppins.variable} ${playfair.variable} bg-gn-white`} suppressHydrationWarning>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#161616" />
-        <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -163,9 +169,9 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-gn-white text-gn-black" suppressHydrationWarning>
         <Navbar />
-        <main className="min-h-screen">
+        <div className="min-h-screen">
           {children}
-        </main>
+        </div>
       </body>
     </html>
   );

@@ -1,37 +1,102 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+// Límites de longitud para evitar abusos
+const MAX_LENGTHS = {
+  nombre: 200,
+  email: 320,
+  telefono: 50,
+  consulta: 5000,
+};
 
-if (!supabaseUrl || !supabaseServiceKey) {
-  throw new Error("Missing Supabase environment variables");
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Escapa caracteres especiales de HTML para prevenir inyección en el email
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
+function getSupabaseClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !supabaseServiceKey) {
+    return null;
+  }
+
+  return createClient(supabaseUrl, supabaseServiceKey);
+}
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { nombre, email, telefono, consulta } = body;
+    const { nombre, email, telefono, consulta, website } = body;
 
-    // Validar datos requeridos
-    if (!nombre || !email || !consulta) {
+    // Honeypot anti-spam: los bots completan este campo oculto.
+    // Respondemos 200 para no darles señal de rechazo.
+    if (website) {
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
+
+    // Validar datos requeridos y tipos
+    if (
+      typeof nombre !== "string" || !nombre.trim() ||
+      typeof email !== "string" || !email.trim() ||
+      typeof consulta !== "string" || !consulta.trim()
+    ) {
       return NextResponse.json(
         { error: "Faltan datos requeridos" },
         { status: 400 }
       );
     }
 
+    if (!EMAIL_REGEX.test(email.trim())) {
+      return NextResponse.json(
+        { error: "El email no tiene un formato válido" },
+        { status: 400 }
+      );
+    }
+
+    if (
+      nombre.length > MAX_LENGTHS.nombre ||
+      email.length > MAX_LENGTHS.email ||
+      (typeof telefono === "string" && telefono.length > MAX_LENGTHS.telefono) ||
+      consulta.length > MAX_LENGTHS.consulta
+    ) {
+      return NextResponse.json(
+        { error: "Uno de los campos excede la longitud máxima permitida" },
+        { status: 400 }
+      );
+    }
+
+    const supabase = getSupabaseClient();
+    if (!supabase) {
+      console.error("Missing Supabase environment variables");
+      return NextResponse.json(
+        { error: "Error de configuración del servidor" },
+        { status: 500 }
+      );
+    }
+
+    const cleanNombre = nombre.trim();
+    const cleanEmail = email.trim();
+    const cleanTelefono = typeof telefono === "string" ? telefono.trim() : "";
+    const cleanConsulta = consulta.trim();
+
     // Insertar en Supabase
     const { data, error } = await supabase
       .from("contact_submissions")
       .insert([
         {
-          nombre,
-          email,
-          telefono: telefono || null,
-          consulta,
+          nombre: cleanNombre,
+          email: cleanEmail,
+          telefono: cleanTelefono || null,
+          consulta: cleanConsulta,
         },
       ])
       .select();
@@ -48,15 +113,15 @@ export async function POST(request: NextRequest) {
     const submissionId = data?.[0]?.id;
     let emailSent = false;
     let emailError: string | null = null;
-    
+
     try {
       const emailBody = `
         <h2>Nuevo mensaje de contacto</h2>
-        <p><strong>Nombre:</strong> ${nombre}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        ${telefono ? `<p><strong>Teléfono:</strong> ${telefono}</p>` : ""}
+        <p><strong>Nombre:</strong> ${escapeHtml(cleanNombre)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(cleanEmail)}</p>
+        ${cleanTelefono ? `<p><strong>Teléfono:</strong> ${escapeHtml(cleanTelefono)}</p>` : ""}
         <p><strong>Consulta:</strong></p>
-        <p>${consulta.replace(/\n/g, "<br>")}</p>
+        <p>${escapeHtml(cleanConsulta).replace(/\n/g, "<br>")}</p>
       `;
 
       const response = await fetch("https://api.resend.com/emails", {
@@ -66,11 +131,11 @@ export async function POST(request: NextRequest) {
           Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: "onboarding@resend.dev",
+          from: process.env.RESEND_FROM || "onboarding@resend.dev",
           to: "estudio@gonzaleznovilloabogados.com",
-          subject: `Nuevo mensaje de contacto de ${nombre}`,
+          subject: `Nuevo mensaje de contacto de ${cleanNombre}`,
           html: emailBody,
-          reply_to: email,
+          reply_to: cleanEmail,
         }),
       });
 

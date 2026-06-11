@@ -19,6 +19,17 @@
   body {
     @apply bg-gn-white text-gn-black antialiased;
   }
+
+  /* Compensa el navbar fijo (h-28 mobile / h-40 desktop) al navegar por anclas */
+  section[id] {
+    scroll-margin-top: 7rem;
+  }
+
+  @media (min-width: 768px) {
+    section[id] {
+      scroll-margin-top: 10rem;
+    }
+  }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;

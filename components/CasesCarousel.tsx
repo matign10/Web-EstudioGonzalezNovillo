@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { supabase, Caso } from '@/lib/supabase';
+import { getSupabase, Caso } from '@/lib/supabase';
 
 // Datos de fallback por si no hay conexión o no hay datos en la BD
 const fallbackCasos = [
@@ -53,6 +53,12 @@ export default function CasesCarousel() {
   useEffect(() => {
     async function fetchCasos() {
       try {
+        const supabase = getSupabase();
+        if (!supabase) {
+          // Sin configuración de Supabase: se muestran los casos de fallback
+          return;
+        }
+
         const { data, error } = await supabase
           .from('casos')
           .select('*')

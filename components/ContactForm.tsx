@@ -8,7 +8,8 @@ export default function ContactForm() {
     nombre: '',
     email: '',
     telefono: '',
-    consulta: ''
+    consulta: '',
+    website: '' // Honeypot anti-spam: debe quedar vacío
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -40,7 +41,7 @@ export default function ContactForm() {
       }
 
       setSubmitStatus('success');
-      setFormData({ nombre: '', email: '', telefono: '', consulta: '' });
+      setFormData({ nombre: '', email: '', telefono: '', consulta: '', website: '' });
     } catch (err) {
       console.error('[v0] Form submission error:', err);
       setSubmitStatus('error');
@@ -57,6 +58,20 @@ export default function ContactForm() {
       </h3>
       
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Honeypot anti-spam: oculto para humanos, los bots lo completan */}
+        <div className="absolute -left-[9999px] top-auto" aria-hidden="true">
+          <label htmlFor="website">No completar este campo</label>
+          <input
+            type="text"
+            name="website"
+            id="website"
+            value={formData.website}
+            onChange={handleChange}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
         <div className="relative">
           <input
             type="text"

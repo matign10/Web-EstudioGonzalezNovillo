@@ -1,15 +1,6 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
 import styles from './BackgroundVideo.module.css';
 
 export default function BackgroundImage() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   return (
     <div className={styles.backgroundContainer}>
       {/* Animated gradient background */}

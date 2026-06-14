@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* Profesionales Destacados */}
-      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-gray/20" id="profesionales">
+      <section className="py-24 md:py-32 bg-[#F0F0EF]" id="profesionales">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -157,7 +157,7 @@ export default function Home() {
       </section>
 
       {/* Casos */}
-      <section className="py-24 md:py-32 bg-gn-white" id="casos">
+      <section className="py-24 md:py-32 bg-gn-black" id="casos">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -167,10 +167,10 @@ export default function Home() {
             className="text-center mb-16"
           >
             <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Resultados</span>
-            <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-display text-gn-white mt-3 tracking-tight">
               Casos
             </h2>
-            <div className="section-divider" />
+            <div className="w-16 h-[2px] bg-gn-white mx-auto mt-4" />
           </motion.div>
 
           <motion.div
@@ -179,13 +179,13 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <CasesCarousel />
+            <CasesCarousel dark />
           </motion.div>
         </div>
       </section>
 
       {/* Prensa */}
-      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-gray/20" id="prensa">
+      <section className="py-24 md:py-32 bg-gn-white" id="prensa">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -213,7 +213,7 @@ export default function Home() {
       </section>
 
       {/* Nosotros */}
-      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-gray/20" id="nosotros">
+      <section className="py-24 md:py-32 bg-[#F0F0EF]" id="nosotros">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -44,7 +44,7 @@ const fallbackCasos = [
 
 const ITEMS_VISIBLE = 3;
 
-export default function CasesCarousel() {
+export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
   const [casos, setCasos] = useState<Caso[]>(fallbackCasos);
   const [isLoading, setIsLoading] = useState(true);
   const [index, setIndex] = useState(0);
@@ -171,7 +171,9 @@ export default function CasesCarousel() {
             key={i}
             onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
             className={`h-2 rounded-full transition-all duration-500 ${
-              i === index ? 'bg-gn-black w-6' : 'bg-gn-gray/30 hover:bg-gn-gray w-2'
+              i === index
+                ? `${dark ? 'bg-gn-white' : 'bg-gn-black'} w-6`
+                : `${dark ? 'bg-gn-white/30 hover:bg-gn-white/60' : 'bg-gn-gray/30 hover:bg-gn-gray'} w-2`
             }`}
             aria-label={`Ir a caso ${i + 1}`}
           />

@@ -87,8 +87,8 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
   const total = casos.length;
 
   // --- Mobile: scroll nativo con loop infinito ---
-  const { trackRef, activeIndex, onScroll, scrollToIndex } = useInfiniteCarousel(total);
-  const loopCasos = [...casos, ...casos, ...casos];
+  const { trackRef, activeIndex, onScroll, scrollToIndex, copies } = useInfiniteCarousel(total);
+  const loopCasos = Array.from({ length: copies }, () => casos).flat();
 
   // --- Desktop: carrusel "infinito" con ventana de 3 tarjetas ---
   const handlePrev = () => {

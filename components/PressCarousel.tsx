@@ -41,8 +41,8 @@ export default function PressCarousel() {
   const total = noticias.length;
 
   // --- Mobile: scroll nativo con loop infinito ---
-  const { trackRef, activeIndex, onScroll, scrollToIndex } = useInfiniteCarousel(total);
-  const loopNoticias = [...noticias, ...noticias, ...noticias];
+  const { trackRef, activeIndex, onScroll, scrollToIndex, copies } = useInfiniteCarousel(total);
+  const loopNoticias = Array.from({ length: copies }, () => noticias).flat();
 
   // --- Desktop: ventana de 3 con wrap-around ---
   const handlePrev = () => {

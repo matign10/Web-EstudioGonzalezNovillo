@@ -105,7 +105,34 @@ export default function Home() {
         </motion.div>
       </section>
 
-
+      {/* Franja de estadísticas / prueba social */}
+      <section className="bg-gn-black border-y border-gn-gray/20">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-gn-gray/20">
+            {[
+              { number: "+20", label: "Años de trayectoria" },
+              { number: "CABA · PBA · Federal", label: "Actuación en todo el país" },
+              { number: "Socios", label: "Atención directa, sin intermediarios" },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="text-center px-6 py-10 md:py-12"
+              >
+                <p className="text-2xl md:text-3xl font-display text-gn-white mb-2 leading-tight">
+                  {stat.number}
+                </p>
+                <p className="text-gn-gray text-xs md:text-sm uppercase tracking-wider">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Áreas de Práctica */}
       <section className="py-24 md:py-32 bg-gn-white" id="areas">

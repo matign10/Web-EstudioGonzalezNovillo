@@ -61,7 +61,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Defensa penal y querella en CABA, provincia de Buenos Aires y el fuero federal. Acompañamiento directo en todas las etapas del proceso.
+              Defensas penales y querellas en CABA, provincia de Buenos Aires y el fuero federal. Acompañamiento directo en todas las etapas del proceso a imputados o víctimas de delitos.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4"

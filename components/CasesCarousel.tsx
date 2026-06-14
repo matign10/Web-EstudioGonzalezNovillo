@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { getSupabase, Caso } from '@/lib/supabase';
+import { useInfiniteCarousel } from './useInfiniteCarousel';
 
 // Datos de fallback por si no hay conexión o no hay datos en la BD
 const fallbackCasos = [
@@ -49,8 +50,6 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
   const [isLoading, setIsLoading] = useState(true);
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [mobileIndex, setMobileIndex] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     async function fetchCasos() {
@@ -87,6 +86,10 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
 
   const total = casos.length;
 
+  // --- Mobile: scroll nativo con loop infinito ---
+  const { trackRef, activeIndex, onScroll, scrollToIndex } = useInfiniteCarousel(total);
+  const loopCasos = [...casos, ...casos, ...casos];
+
   // --- Desktop: carrusel "infinito" con ventana de 3 tarjetas ---
   const handlePrev = () => {
     setDirection(-1);
@@ -108,21 +111,6 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
     exit: (dir: number) => ({ opacity: 0, x: dir * -60 }),
   };
 
-  // --- Mobile: deslizar con el dedo, con la tarjeta siguiente asomándose ---
-  const handleMobileScroll = () => {
-    const el = trackRef.current;
-    if (!el || total === 0) return;
-    const cardWidth = el.scrollWidth / total;
-    setMobileIndex(Math.min(total - 1, Math.max(0, Math.round(el.scrollLeft / cardWidth))));
-  };
-
-  const scrollToMobile = (i: number) => {
-    const el = trackRef.current;
-    if (!el || total === 0) return;
-    const cardWidth = el.scrollWidth / total;
-    el.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
-  };
-
   if (isLoading) {
     return (
       <div className="flex justify-center items-center py-16">
@@ -133,15 +121,15 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
 
   return (
     <div>
-      {/* MOBILE: scroll horizontal con snap y peek de la siguiente */}
+      {/* MOBILE: scroll horizontal con snap, peek y loop infinito */}
       <div className="md:hidden">
         <div
           ref={trackRef}
-          onScroll={handleMobileScroll}
+          onScroll={onScroll}
           className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
-          {casos.map((caso) => (
-            <div key={caso.id} className="snap-start shrink-0 basis-[82%]">
+          {loopCasos.map((caso, i) => (
+            <div key={`${caso.id}-${i}`} className="snap-start shrink-0 basis-[82%]">
               {caso.pdf_url ? (
                 <a
                   href={caso.pdf_url}
@@ -163,9 +151,9 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
           {casos.map((_, i) => (
             <button
               key={i}
-              onClick={() => scrollToMobile(i)}
+              onClick={() => scrollToIndex(i)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i === mobileIndex
+                i === activeIndex
                   ? `${dark ? 'bg-gn-white' : 'bg-gn-black'} w-6`
                   : `${dark ? 'bg-gn-white/30 hover:bg-gn-white/60' : 'bg-gn-gray/30 hover:bg-gn-gray'} w-2`
               }`}

@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useInfiniteCarousel } from './useInfiniteCarousel';
 
 const noticias = [
   {
@@ -37,9 +38,11 @@ const ITEMS_VISIBLE = 3;
 export default function PressCarousel() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [mobileIndex, setMobileIndex] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
   const total = noticias.length;
+
+  // --- Mobile: scroll nativo con loop infinito ---
+  const { trackRef, activeIndex, onScroll, scrollToIndex } = useInfiniteCarousel(total);
+  const loopNoticias = [...noticias, ...noticias, ...noticias];
 
   // --- Desktop: ventana de 3 con wrap-around ---
   const handlePrev = () => {
@@ -62,33 +65,18 @@ export default function PressCarousel() {
     exit: (dir: number) => ({ opacity: 0, x: dir * -60 }),
   };
 
-  // --- Mobile: deslizar con el dedo, con la siguiente asomándose ---
-  const handleMobileScroll = () => {
-    const el = trackRef.current;
-    if (!el) return;
-    const cardWidth = el.scrollWidth / total;
-    setMobileIndex(Math.min(total - 1, Math.max(0, Math.round(el.scrollLeft / cardWidth))));
-  };
-
-  const scrollToMobile = (i: number) => {
-    const el = trackRef.current;
-    if (!el) return;
-    const cardWidth = el.scrollWidth / total;
-    el.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
-  };
-
   return (
     <div>
-      {/* MOBILE: scroll horizontal con snap y peek */}
+      {/* MOBILE: scroll horizontal con snap, peek y loop infinito */}
       <div className="md:hidden">
         <div
           ref={trackRef}
-          onScroll={handleMobileScroll}
+          onScroll={onScroll}
           className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
-          {noticias.map((noticia) => (
+          {loopNoticias.map((noticia, i) => (
             <a
-              key={noticia.url}
+              key={`${noticia.url}-${i}`}
               href={noticia.url}
               target="_blank"
               rel="noopener noreferrer nofollow"
@@ -111,9 +99,9 @@ export default function PressCarousel() {
           {noticias.map((_, i) => (
             <button
               key={i}
-              onClick={() => scrollToMobile(i)}
+              onClick={() => scrollToIndex(i)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i === mobileIndex ? 'bg-gn-black w-6' : 'bg-gn-gray/30 hover:bg-gn-gray w-2'
+                i === activeIndex ? 'bg-gn-black w-6' : 'bg-gn-gray/30 hover:bg-gn-gray w-2'
               }`}
               aria-label={`Ir a noticia ${i + 1}`}
             />

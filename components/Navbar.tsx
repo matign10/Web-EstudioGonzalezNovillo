@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -18,7 +18,15 @@ const navigation = [
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
@@ -36,9 +44,17 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gn-white dark:bg-black fixed w-full z-20 top-0 start-0 border-b border-gn-gray/30 dark:border-gn-gray/20">
+    <nav
+      className={`bg-gn-white dark:bg-black fixed w-full z-20 top-0 start-0 border-b border-gn-gray/30 dark:border-gn-gray/20 transition-shadow duration-300 ${
+        isScrolled ? 'shadow-md' : ''
+      }`}
+    >
       <div className="max-w-screen-xl mx-auto px-4">
-        <div className="flex items-center justify-between h-28 md:h-40">
+        <div
+          className={`flex items-center justify-between transition-all duration-300 ${
+            isScrolled ? 'h-16 md:h-20' : 'h-28 md:h-40'
+          }`}
+        >
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
@@ -46,7 +62,9 @@ export default function Navbar() {
               alt="Estudio González Novillo - Abogados Penalistas en Buenos Aires"
               width={500}
               height={120}
-              className="h-20 md:h-40 w-auto dark:invert"
+              className={`w-auto dark:invert transition-all duration-300 ${
+                isScrolled ? 'h-12 md:h-16' : 'h-20 md:h-40'
+              }`}
               priority
             />
           </Link>

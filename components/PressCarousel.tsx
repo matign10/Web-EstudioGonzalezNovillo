@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -37,8 +37,11 @@ const ITEMS_VISIBLE = 3;
 export default function PressCarousel() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
   const total = noticias.length;
 
+  // --- Desktop: ventana de 3 con wrap-around ---
   const handlePrev = () => {
     setDirection(-1);
     setIndex(prev => (prev - 1 + total) % total);
@@ -49,7 +52,6 @@ export default function PressCarousel() {
     setIndex(prev => (prev + 1) % total);
   };
 
-  // Build the 3 visible items wrapping around
   const visibleNoticias = Array.from({ length: ITEMS_VISIBLE }, (_, i) =>
     noticias[(index + i) % total]
   );
@@ -60,42 +62,37 @@ export default function PressCarousel() {
     exit: (dir: number) => ({ opacity: 0, x: dir * -60 }),
   };
 
+  // --- Mobile: deslizar con el dedo, con la siguiente asomándose ---
+  const handleMobileScroll = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const cardWidth = el.scrollWidth / total;
+    setMobileIndex(Math.min(total - 1, Math.max(0, Math.round(el.scrollLeft / cardWidth))));
+  };
+
+  const scrollToMobile = (i: number) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const cardWidth = el.scrollWidth / total;
+    el.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+  };
+
   return (
-    <div className="relative">
-      {/* Left Arrow */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
-        aria-label="Ver noticias anteriores"
-      >
-        <ChevronLeft className="w-5 h-5" />
-      </button>
-
-      {/* Right Arrow */}
-      <button
-        onClick={handleNext}
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
-        aria-label="Ver más noticias"
-      >
-        <ChevronRight className="w-5 h-5" />
-      </button>
-
-      {/* Cards Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-8 lg:mx-0 overflow-hidden">
-        <AnimatePresence mode="popLayout" custom={direction}>
-          {visibleNoticias.map((noticia, i) => (
-            <motion.a
-              key={`${noticia.url}-${(index + i) % total}`}
+    <div>
+      {/* MOBILE: scroll horizontal con snap y peek */}
+      <div className="md:hidden">
+        <div
+          ref={trackRef}
+          onScroll={handleMobileScroll}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {noticias.map((noticia) => (
+            <a
+              key={noticia.url}
               href={noticia.url}
               target="_blank"
               rel="noopener noreferrer nofollow"
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="group block"
+              className="group block snap-start shrink-0 basis-[82%]"
             >
               <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-500 hover:border-gn-black hover:shadow-lg min-h-[160px] flex flex-col">
                 <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4 self-start">
@@ -105,23 +102,88 @@ export default function PressCarousel() {
                   {noticia.title}
                 </h3>
               </div>
-            </motion.a>
+            </a>
           ))}
-        </AnimatePresence>
+        </div>
+
+        {/* Indicadores mobile */}
+        <div className="flex justify-center gap-2 mt-6">
+          {noticias.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToMobile(i)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === mobileIndex ? 'bg-gn-black w-6' : 'bg-gn-gray/30 hover:bg-gn-gray w-2'
+              }`}
+              aria-label={`Ir a noticia ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Page Indicators */}
-      <div className="flex justify-center gap-2 mt-8">
-        {noticias.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
-            className={`h-2 rounded-full transition-all duration-500 ${
-              i === index ? 'bg-gn-black w-6' : 'bg-gn-gray/30 hover:bg-gn-gray w-2'
-            }`}
-            aria-label={`Ir a noticia ${i + 1}`}
-          />
-        ))}
+      {/* DESKTOP: carrusel con ventana de 3 + flechas */}
+      <div className="hidden md:block relative">
+        {/* Left Arrow */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
+          aria-label="Ver noticias anteriores"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        {/* Right Arrow */}
+        <button
+          onClick={handleNext}
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
+          aria-label="Ver más noticias"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        {/* Cards Container */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden">
+          <AnimatePresence mode="popLayout" custom={direction}>
+            {visibleNoticias.map((noticia, i) => (
+              <motion.a
+                key={`${noticia.url}-${(index + i) % total}`}
+                href={noticia.url}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="group block"
+              >
+                <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-500 hover:border-gn-black hover:shadow-lg min-h-[160px] flex flex-col">
+                  <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4 self-start">
+                    {noticia.source}
+                  </span>
+                  <h3 className="text-lg font-display text-gn-black group-hover:text-gn-gray transition-colors duration-500 leading-snug flex-1">
+                    {noticia.title}
+                  </h3>
+                </div>
+              </motion.a>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Page Indicators */}
+        <div className="flex justify-center gap-2 mt-8">
+          {noticias.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
+              className={`h-2 rounded-full transition-all duration-500 ${
+                i === index ? 'bg-gn-black w-6' : 'bg-gn-gray/30 hover:bg-gn-gray w-2'
+              }`}
+              aria-label={`Ir a noticia ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

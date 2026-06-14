@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { getSupabase, Caso } from '@/lib/supabase';
@@ -49,6 +49,8 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
   const [isLoading, setIsLoading] = useState(true);
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     async function fetchCasos() {
@@ -85,6 +87,7 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
 
   const total = casos.length;
 
+  // --- Desktop: carrusel "infinito" con ventana de 3 tarjetas ---
   const handlePrev = () => {
     setDirection(-1);
     setIndex(prev => (prev - 1 + total) % total);
@@ -105,79 +108,139 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
     exit: (dir: number) => ({ opacity: 0, x: dir * -60 }),
   };
 
+  // --- Mobile: deslizar con el dedo, con la tarjeta siguiente asomándose ---
+  const handleMobileScroll = () => {
+    const el = trackRef.current;
+    if (!el || total === 0) return;
+    const cardWidth = el.scrollWidth / total;
+    setMobileIndex(Math.min(total - 1, Math.max(0, Math.round(el.scrollLeft / cardWidth))));
+  };
+
+  const scrollToMobile = (i: number) => {
+    const el = trackRef.current;
+    if (!el || total === 0) return;
+    const cardWidth = el.scrollWidth / total;
+    el.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+  };
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center py-16">
-        <div className="w-8 h-8 border-2 border-gn-black border-t-transparent rounded-full animate-spin" />
+        <div className={`w-8 h-8 border-2 ${dark ? 'border-gn-white' : 'border-gn-black'} border-t-transparent rounded-full animate-spin`} />
       </div>
     );
   }
 
   return (
-    <div className="relative">
-      {/* Left Arrow */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-0 top-[210px] -translate-y-1/2 -translate-x-4 lg:-translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
-        aria-label="Ver casos anteriores"
-      >
-        <ChevronLeft className="w-5 h-5" />
-      </button>
-
-      {/* Right Arrow */}
-      <button
-        onClick={handleNext}
-        className="absolute right-0 top-[210px] -translate-y-1/2 translate-x-4 lg:translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
-        aria-label="Ver más casos"
-      >
-        <ChevronRight className="w-5 h-5" />
-      </button>
-
-      {/* Cards Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-8 lg:mx-0 overflow-hidden">
-        <AnimatePresence mode="popLayout" custom={direction}>
-          {visibleCasos.map((caso, i) => (
-            <motion.div
-              key={`${caso.id}-${(index + i) % total}`}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="group block"
-            >
+    <div>
+      {/* MOBILE: scroll horizontal con snap y peek de la siguiente */}
+      <div className="md:hidden">
+        <div
+          ref={trackRef}
+          onScroll={handleMobileScroll}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {casos.map((caso) => (
+            <div key={caso.id} className="snap-start shrink-0 basis-[82%]">
               {caso.pdf_url ? (
                 <a
                   href={caso.pdf_url}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
-                  className="block h-full"
+                  className="group block h-full"
                 >
                   <CasoCard caso={caso} hasLink />
                 </a>
               ) : (
                 <CasoCard caso={caso} hasLink={false} />
               )}
-            </motion.div>
+            </div>
           ))}
-        </AnimatePresence>
+        </div>
+
+        {/* Indicadores mobile */}
+        <div className="flex justify-center gap-2 mt-6">
+          {casos.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToMobile(i)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === mobileIndex
+                  ? `${dark ? 'bg-gn-white' : 'bg-gn-black'} w-6`
+                  : `${dark ? 'bg-gn-white/30 hover:bg-gn-white/60' : 'bg-gn-gray/30 hover:bg-gn-gray'} w-2`
+              }`}
+              aria-label={`Ir a caso ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Page Indicators */}
-      <div className="flex justify-center gap-2 mt-8">
-        {casos.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
-            className={`h-2 rounded-full transition-all duration-500 ${
-              i === index
-                ? `${dark ? 'bg-gn-white' : 'bg-gn-black'} w-6`
-                : `${dark ? 'bg-gn-white/30 hover:bg-gn-white/60' : 'bg-gn-gray/30 hover:bg-gn-gray'} w-2`
-            }`}
-            aria-label={`Ir a caso ${i + 1}`}
-          />
-        ))}
+      {/* DESKTOP: carrusel con ventana de 3 + flechas */}
+      <div className="hidden md:block relative">
+        {/* Left Arrow */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-0 top-[210px] -translate-y-1/2 -translate-x-4 lg:-translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
+          aria-label="Ver casos anteriores"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        {/* Right Arrow */}
+        <button
+          onClick={handleNext}
+          className="absolute right-0 top-[210px] -translate-y-1/2 translate-x-4 lg:translate-x-14 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center border border-gn-black text-gn-black bg-gn-white hover:bg-gn-black hover:text-gn-white transition-colors duration-500"
+          aria-label="Ver más casos"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        {/* Cards Container */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden">
+          <AnimatePresence mode="popLayout" custom={direction}>
+            {visibleCasos.map((caso, i) => (
+              <motion.div
+                key={`${caso.id}-${(index + i) % total}`}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="group block"
+              >
+                {caso.pdf_url ? (
+                  <a
+                    href={caso.pdf_url}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="block h-full"
+                  >
+                    <CasoCard caso={caso} hasLink />
+                  </a>
+                ) : (
+                  <CasoCard caso={caso} hasLink={false} />
+                )}
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Page Indicators */}
+        <div className="flex justify-center gap-2 mt-8">
+          {casos.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
+              className={`h-2 rounded-full transition-all duration-500 ${
+                i === index
+                  ? `${dark ? 'bg-gn-white' : 'bg-gn-black'} w-6`
+                  : `${dark ? 'bg-gn-white/30 hover:bg-gn-white/60' : 'bg-gn-gray/30 hover:bg-gn-gray'} w-2`
+              }`}
+              aria-label={`Ir a caso ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

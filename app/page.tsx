@@ -157,7 +157,7 @@ export default function Home() {
       </section>
 
       {/* Casos */}
-      <section className="py-24 md:py-32 bg-gn-black" id="casos">
+      <section className="py-24 md:py-32 bg-[#2a2a2a]" id="casos">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

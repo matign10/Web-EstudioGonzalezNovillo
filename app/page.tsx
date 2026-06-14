@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import BackgroundImage from "@/components/BackgroundVideo";
+import Image from "next/image";
 import PracticeAreasUnified from "@/components/PracticeAreasUnified";
 import ProfessionalsGrid from "@/components/ProfessionalsGrid";
 import Footer from "@/components/Footer";
@@ -27,7 +27,17 @@ export default function Home() {
     <main>
       {/* Hero Section */}
       <section className="relative min-h-screen overflow-hidden bg-gn-black">
-        <BackgroundImage />
+        {/* Foto real del estudio en blanco y negro */}
+        <Image
+          src="/images/hero-estudio.webp"
+          alt="Estudio González Novillo - Abogados penalistas en Buenos Aires"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover grayscale opacity-70"
+        />
+        {/* Overlay de gradiente para legibilidad del texto */}
+        <div className="absolute inset-0 bg-gradient-to-r from-gn-black via-gn-black/85 to-gn-black/40 z-[1]" />
         <div className="absolute inset-0 hero-pattern z-[1]" />
         <div className="relative z-10 max-w-screen-xl mx-auto px-4 h-screen flex items-center">
           <motion.div

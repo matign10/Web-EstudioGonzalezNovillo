@@ -8,7 +8,6 @@ import ProfessionalsGrid from "@/components/ProfessionalsGrid";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
-import FadeInImage from "@/components/FadeInImage";
 import ContactForm from "@/components/ContactForm";
 import PressCarousel from "@/components/PressCarousel";
 import CasesCarousel from "@/components/CasesCarousel";
@@ -135,27 +134,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Profesionales Destacados */}
-      <section className="py-24 md:py-32 bg-[#F0F0EF]" id="profesionales">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Equipo Legal</span>
-            <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
-              Nuestros Profesionales
-            </h2>
-            <div className="section-divider" />
-          </motion.div>
-
-          <ProfessionalsGrid />
-        </div>
-      </section>
-
       {/* Casos */}
       <section className="py-24 md:py-32 bg-[#2a2a2a]" id="casos">
         <div className="max-w-screen-xl mx-auto px-4">
@@ -229,49 +207,42 @@ export default function Home() {
             <div className="section-divider" />
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="aspect-[4/3] overflow-hidden bg-gn-gray/10">
-                <FadeInImage
-                  src="/images/fotos/foto estudio Coco y Mati 2.webp"
-                  alt="Equipo de abogados penalistas del Estudio González Novillo en Buenos Aires"
-                  width={800}
-                  height={600}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-l border-t border-gn-gray/30" />
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-r border-b border-gn-gray/30" />
-            </motion.div>
+          {/* Quiénes Somos - intro */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto mb-16 md:mb-20"
+          >
+            <h3 className="text-2xl font-display text-gn-black mb-6 text-center">
+              Quiénes Somos
+            </h3>
+            <p className="text-gn-gray mb-6 leading-relaxed">
+              Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal. Con más de 20 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas en CABA, provincia de Buenos Aires y a nivel federal en todo el país. Abordamos causas que van desde delitos económicos y estafas hasta conflictos familiares con aristas penales.
+            </p>
+            <p className="text-gn-gray mb-6 leading-relaxed">
+              Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, comerciales o laborales, en conjunto con estudios especializados con los que trabajamos habitualmente — Estudio Echavarría Coll (civil y comercial) y Espinosa Paz (laboral). Entendemos que el conflicto tiene distintas aristas y por eso buscamos soluciones que resuelvan el problema de fondo.
+            </p>
+            <p className="text-gn-gray leading-relaxed">
+              Trabajamos con compromiso, claridad y un trato cercano. Sabemos que cada caso afecta la vida de una persona, y eso guía nuestra forma de trabajar.
+            </p>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-2xl font-display text-gn-black mb-4">
-                Quiénes Somos
-              </h3>
-              <p className="text-gn-gray mb-6 leading-relaxed">
-                Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal. Con más de 20 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas en CABA, provincia de Buenos Aires y a nivel federal en todo el país. Abordamos causas que van desde delitos económicos y estafas hasta conflictos familiares con aristas penales.
-              </p>
-              <p className="text-gn-gray mb-6 leading-relaxed">
-                Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, comerciales o laborales, en conjunto con estudios especializados con los que trabajamos habitualmente — Estudio Echavarría Coll (civil y comercial) y Espinosa Paz (laboral). Entendemos que el conflicto tiene distintas aristas y por eso buscamos soluciones que resuelvan el problema de fondo.
-              </p>
-              <p className="text-gn-gray leading-relaxed">
-                Trabajamos con compromiso, claridad y un trato cercano. Sabemos que cada caso afecta la vida de una persona, y eso guía nuestra forma de trabajar.
-              </p>
-            </motion.div>
-          </div>
+          {/* El equipo */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h3 className="text-xl md:text-2xl font-display text-gn-black tracking-tight">
+              El equipo
+            </h3>
+          </motion.div>
+
+          <ProfessionalsGrid />
         </div>
       </section>
 

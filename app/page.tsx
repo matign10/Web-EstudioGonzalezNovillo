@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import BackgroundImage from "@/components/BackgroundVideo";
 import PracticeAreasUnified from "@/components/PracticeAreasUnified";
-import ProfessionalsGrid from "@/components/ProfessionalsGrid";
+import ProfessionalsAccordion from "@/components/ProfessionalsAccordion";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -135,27 +135,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Profesionales Destacados */}
-      <section className="py-24 md:py-32 bg-[#F0F0EF]" id="profesionales">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Equipo Legal</span>
-            <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
-              Nuestros Profesionales
-            </h2>
-            <div className="section-divider" />
-          </motion.div>
-
-          <ProfessionalsGrid />
-        </div>
-      </section>
-
       {/* Casos */}
       <section className="py-24 md:py-32 bg-[#2a2a2a]" id="casos">
         <div className="max-w-screen-xl mx-auto px-4">
@@ -271,6 +250,25 @@ export default function Home() {
                 Trabajamos con compromiso, claridad y un trato cercano. Sabemos que cada caso afecta la vida de una persona, y eso guía nuestra forma de trabajar.
               </p>
             </motion.div>
+          </div>
+
+          {/* El equipo */}
+          <div className="mt-20 md:mt-28">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-12"
+            >
+              <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">El equipo</span>
+              <h3 className="text-2xl md:text-3xl font-display text-gn-black mt-3 tracking-tight">
+                Nuestros Profesionales
+              </h3>
+              <div className="section-divider" />
+            </motion.div>
+
+            <ProfessionalsAccordion />
           </div>
         </div>
       </section>

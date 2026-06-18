@@ -219,13 +219,13 @@ export default function Home() {
               Quiénes Somos
             </h3>
             <p className="text-gn-gray mb-6 leading-relaxed">
-              Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal. Con más de 20 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas en CABA, provincia de Buenos Aires y a nivel federal en todo el país. Abordamos causas que van desde delitos económicos y estafas hasta conflictos familiares con aristas penales.
+              Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal, con más de 20 años de trayectoria. Actuamos en CABA, la provincia de Buenos Aires y el fuero federal en todo el país.
             </p>
             <p className="text-gn-gray mb-6 leading-relaxed">
-              Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, comerciales o laborales, en conjunto con estudios especializados con los que trabajamos habitualmente — Estudio Echavarría Coll (civil y comercial) y Espinosa Paz (laboral). Entendemos que el conflicto tiene distintas aristas y por eso buscamos soluciones que resuelvan el problema de fondo.
+              Entendemos que detrás de cada causa hay una persona y un conflicto con distintas aristas. Por eso lo abordamos con una mirada integral, buscando siempre la solución que resuelva el problema de fondo.
             </p>
             <p className="text-gn-gray leading-relaxed">
-              Trabajamos con compromiso, claridad y un trato cercano. Sabemos que cada caso afecta la vida de una persona, y eso guía nuestra forma de trabajar.
+              Nos guía el compromiso, la claridad y un trato cercano: sabemos que cada caso afecta la vida de quien nos confía su defensa, y así lo tomamos.
             </p>
           </motion.div>
 

@@ -9,7 +9,6 @@ import { Menu, X } from 'lucide-react';
 const navigation = [
   { name: 'Inicio', href: '/' },
   { name: 'Áreas de Práctica', href: '#areas' },
-  { name: 'Profesionales', href: '#profesionales' },
   { name: 'Casos', href: '#casos' },
   { name: 'Prensa', href: '#prensa' },
   { name: 'Nosotros', href: '#nosotros' },

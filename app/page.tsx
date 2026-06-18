@@ -207,42 +207,42 @@ export default function Home() {
             <div className="section-divider" />
           </motion.div>
 
-          {/* Quiénes Somos - intro */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto mb-16 md:mb-20"
-          >
-            <h3 className="text-2xl font-display text-gn-black mb-6 text-center">
-              Quiénes Somos
-            </h3>
-            <p className="text-gn-gray mb-6 leading-relaxed">
-              Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal. Con más de 20 años de trayectoria, trabajamos tanto en la defensa de imputados como en la representación de víctimas en CABA, provincia de Buenos Aires y a nivel federal en todo el país. Abordamos causas que van desde delitos económicos y estafas hasta conflictos familiares con aristas penales.
-            </p>
-            <p className="text-gn-gray mb-6 leading-relaxed">
-              Nuestro enfoque es integral: cuando un caso lo requiere, coordinamos la estrategia penal con acciones civiles, comerciales o laborales, en conjunto con estudios especializados con los que trabajamos habitualmente — Estudio Echavarría Coll (civil y comercial) y Espinosa Paz (laboral). Entendemos que el conflicto tiene distintas aristas y por eso buscamos soluciones que resuelvan el problema de fondo.
-            </p>
-            <p className="text-gn-gray leading-relaxed">
-              Trabajamos con compromiso, claridad y un trato cercano. Sabemos que cada caso afecta la vida de una persona, y eso guía nuestra forma de trabajar.
-            </p>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Quiénes Somos */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:sticky lg:top-44"
+            >
+              <h3 className="text-2xl font-display text-gn-black mb-6">
+                Quiénes Somos
+              </h3>
+              <p className="text-gn-gray mb-6 leading-relaxed">
+                Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal, con más de 20 años de trayectoria. Actuamos en CABA, la provincia de Buenos Aires y el fuero federal en todo el país.
+              </p>
+              <p className="text-gn-gray mb-6 leading-relaxed">
+                Entendemos que detrás de cada causa hay una persona y un conflicto con distintas aristas. Por eso lo abordamos con una mirada integral, buscando siempre la solución que resuelva el problema de fondo.
+              </p>
+              <p className="text-gn-gray leading-relaxed">
+                Nos guía el compromiso, la claridad y un trato cercano: sabemos que cada caso afecta la vida de quien nos confía su defensa, y así lo tomamos.
+              </p>
+            </motion.div>
 
-          {/* El equipo */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h3 className="text-xl md:text-2xl font-display text-gn-black tracking-tight">
-              El equipo
-            </h3>
-          </motion.div>
-
-          <ProfessionalsGrid />
+            {/* El equipo */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-gn-black mb-6">
+                El equipo
+              </h3>
+              <ProfessionalsGrid columns={1} />
+            </motion.div>
+          </div>
         </div>
       </section>
 

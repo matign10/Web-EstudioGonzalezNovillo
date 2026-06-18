@@ -39,7 +39,7 @@ const professionals = [
   }
 ];
 
-export default function ProfessionalsGrid() {
+export default function ProfessionalsGrid({ columns = 2 }: { columns?: 1 | 2 }) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
 
@@ -53,7 +53,7 @@ export default function ProfessionalsGrid() {
 
   return (
     <motion.div
-      className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+      className={`grid gap-8 ${columns === 2 ? 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto' : 'grid-cols-1'}`}
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, margin: "-100px" }}
@@ -77,7 +77,7 @@ export default function ProfessionalsGrid() {
               onClick={() => toggleExpand(i)}
             >
               {/* Photo container */}
-              <div className="relative aspect-[3/4] overflow-hidden bg-gn-gray/10">
+              <div className={`relative overflow-hidden bg-gn-gray/10 ${columns === 1 ? 'aspect-[16/10]' : 'aspect-[3/4]'}`}>
                 <Image
                   src={profesional.image}
                   alt={profesional.altText}

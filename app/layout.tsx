@@ -1,26 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const poppins = Poppins({ 
-  subsets: ["latin"],
+const sourceSans = Source_Sans_3({
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600"],
-  variable: "--font-poppins",
-  display: "swap"
+  variable: "--font-sans",
+  display: "swap",
 });
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "600"],
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600", "700"],
   variable: "--font-display",
-  display: "swap"
+  display: "swap",
 });
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#161616",
+  themeColor: "#101A2A",
 };
 
 export const metadata: Metadata = {
@@ -160,7 +160,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="es" className={`${poppins.variable} ${playfair.variable} bg-gn-white`} suppressHydrationWarning>
+    <html lang="es" className={`${sourceSans.variable} ${cormorant.variable} bg-gn-white`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

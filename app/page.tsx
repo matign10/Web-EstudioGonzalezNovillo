@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import BackgroundImage from "@/components/BackgroundVideo";
+import HeroPortrait from "@/components/HeroPortrait";
 import PracticeAreasUnified from "@/components/PracticeAreasUnified";
 import ProfessionalsGrid from "@/components/ProfessionalsGrid";
 import Footer from "@/components/Footer";
@@ -26,64 +26,64 @@ export default function Home() {
     <main>
       {/* Hero Section */}
       <section className="relative min-h-screen overflow-hidden bg-gn-black">
-        <BackgroundImage />
-        <div className="absolute inset-0 hero-pattern z-[1]" />
-        <div className="relative z-10 max-w-screen-xl mx-auto px-4 h-screen flex items-center">
-          <motion.div
-            className="max-w-2xl text-gn-white"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+        <div className="absolute inset-0 hero-pattern z-[1]" aria-hidden="true" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4 min-h-screen flex items-center pt-32 md:pt-44 pb-24">
+          <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_280px] lg:gap-16">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex items-center gap-3 mb-6"
-            >
-              <div className="w-12 h-[1px] bg-gn-gray" />
-              <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Derecho penal</span>
-            </motion.div>
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-display mb-6 tracking-tight leading-[1.1] text-balance"
-              initial={{ opacity: 0, y: 20 }}
+              className="max-w-2xl text-gn-white"
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Estudio{" "}
-              <span className="text-gn-gray">González</span>{" "}
-              Novillo
-            </motion.h1>
-            <motion.p
-              className="text-lg md:text-xl mb-10 text-gn-gray leading-relaxed max-w-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              Defensas penales y querellas en CABA, provincia de Buenos Aires y el fuero federal. Acompañamiento directo en todas las etapas del proceso a imputados o víctimas de delitos.
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-            >
-              <a
-                href="#contacto"
-                onClick={(e) => scrollToSection(e, '#contacto')}
-                className="inline-flex items-center justify-center bg-gn-white text-gn-black px-8 py-4 text-sm font-medium tracking-wide hover:bg-gn-gray hover:text-gn-white transition-all duration-300 cursor-pointer"
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex items-center gap-3 mb-6"
               >
-                Consultanos
-              </a>
-              <a
-                href="#areas"
-                onClick={(e) => scrollToSection(e, '#areas')}
-                className="inline-flex items-center justify-center border border-gn-gray text-gn-white px-8 py-4 text-sm font-medium tracking-wide hover:bg-gn-white hover:text-gn-black hover:border-gn-white transition-all duration-300 cursor-pointer"
+                <div className="w-12 h-px bg-gn-gold-light" />
+                <span className="text-gn-gold-light font-medium tracking-widest text-xs uppercase">Derecho penal</span>
+              </motion.div>
+              <motion.h1
+                className="text-4xl md:text-5xl lg:text-6xl font-display mb-6 tracking-tight leading-[1.08] text-balance"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
               >
-                Nuestros Servicios
-              </a>
+                Estudio González Novillo
+              </motion.h1>
+              <motion.p
+                className="text-lg md:text-xl mb-10 text-gn-white/80 leading-relaxed max-w-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                Defensas penales y querellas en CABA, provincia de Buenos Aires y el fuero federal. Acompañamiento directo en todas las etapas del proceso a imputados o víctimas de delitos.
+              </motion.p>
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+              >
+                <a
+                  href="#contacto"
+                  onClick={(e) => scrollToSection(e, '#contacto')}
+                  className="inline-flex items-center justify-center bg-gn-white text-gn-black px-8 py-4 text-sm font-medium tracking-wide hover:bg-gn-gold-light transition-all duration-300 cursor-pointer"
+                >
+                  Consultanos
+                </a>
+                <a
+                  href="#areas"
+                  onClick={(e) => scrollToSection(e, '#areas')}
+                  className="inline-flex items-center justify-center border border-gn-gold-light/70 text-gn-white px-8 py-4 text-sm font-medium tracking-wide hover:bg-gn-white hover:text-gn-black hover:border-gn-white transition-all duration-300 cursor-pointer"
+                >
+                  Nuestros Servicios
+                </a>
+              </motion.div>
             </motion.div>
-          </motion.div>
+            <HeroPortrait />
+          </div>
         </div>
 
         {/* Scroll indicator */}
@@ -96,7 +96,7 @@ export default function Home() {
           <a
             href="#areas"
             onClick={(e) => scrollToSection(e, '#areas')}
-            className="flex flex-col items-center text-gn-gray hover:text-gn-white transition-colors cursor-pointer"
+            className="flex flex-col items-center text-gn-gold-light hover:text-gn-white transition-colors cursor-pointer"
           >
             <span className="text-xs tracking-widest uppercase mb-2">Explorar</span>
             <ChevronDown className="w-5 h-5 animate-bounce-slow" />
@@ -116,11 +116,14 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Nuestros Servicios</span>
+            <span className="text-gn-gold font-medium tracking-widest text-xs uppercase">Nuestros Servicios</span>
             <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
               Áreas de Práctica
             </h2>
             <div className="section-divider" />
+            <p className="mx-auto mt-8 max-w-3xl text-base md:text-lg leading-relaxed text-gn-stone">
+              El estudio se dedica al derecho penal. Intervenimos en la defensa de personas imputadas y en la representación de víctimas que se constituyen como querellantes, ante la justicia de la Ciudad Autónoma de Buenos Aires, los tribunales de la provincia de Buenos Aires y el fuero federal.
+            </p>
           </motion.div>
 
           <motion.div
@@ -135,7 +138,7 @@ export default function Home() {
       </section>
 
       {/* Casos */}
-      <section className="py-24 md:py-32 bg-[#2a2a2a]" id="casos">
+      <section className="py-24 md:py-32 bg-gn-charcoal" id="casos">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -144,11 +147,11 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Resultados</span>
+            <span className="text-gn-gold-light font-medium tracking-widest text-xs uppercase">Resultados</span>
             <h2 className="text-3xl md:text-5xl font-display text-gn-white mt-3 tracking-tight">
               Casos
             </h2>
-            <div className="w-16 h-[2px] bg-gn-white mx-auto mt-4" />
+            <div className="w-16 h-px bg-gn-gold-light mx-auto mt-4" />
           </motion.div>
 
           <motion.div
@@ -172,7 +175,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Repercusión</span>
+            <span className="text-gn-gold font-medium tracking-widest text-xs uppercase">Repercusión</span>
             <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
               Prensa
             </h2>
@@ -191,7 +194,7 @@ export default function Home() {
       </section>
 
       {/* Nosotros */}
-      <section className="py-24 md:py-32 bg-[#F0F0EF]" id="nosotros">
+      <section className="py-24 md:py-32 bg-gn-sand" id="nosotros">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -200,7 +203,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Conózcanos</span>
+            <span className="text-gn-gold font-medium tracking-widest text-xs uppercase">Conózcanos</span>
             <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
               Nosotros
             </h2>
@@ -218,14 +221,20 @@ export default function Home() {
             <h3 className="text-2xl font-display text-gn-black mb-6 text-center">
               Quiénes Somos
             </h3>
-            <p className="text-gn-gray mb-6 leading-relaxed">
-              Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal, con más de 20 años de trayectoria. Actuamos en CABA, la provincia de Buenos Aires y el fuero federal en todo el país.
+            <p className="text-gn-stone mb-6 leading-relaxed">
+              Somos un estudio jurídico con sede en la Ciudad Autónoma de Buenos Aires, especializado en derecho penal, con más de 20 años de trayectoria. La práctica tiene dos ejes: la defensa de personas imputadas y la representación de víctimas que impulsan la causa como querellantes.
             </p>
-            <p className="text-gn-gray mb-6 leading-relaxed">
-              Entendemos que detrás de cada causa hay una persona y un conflicto con distintas aristas. Por eso lo abordamos con una mirada integral, buscando siempre la solución que resuelva el problema de fondo.
+            <p className="text-gn-stone mb-6 leading-relaxed">
+              Actuamos en la Ciudad Autónoma de Buenos Aires, en la provincia de Buenos Aires y en el fuero federal en todo el país. El acompañamiento recorre las etapas del proceso penal: el inicio de la investigación, las medidas cautelares, las audiencias, las declaraciones y, cuando el caso lo requiere, el juicio.
             </p>
-            <p className="text-gn-gray leading-relaxed">
-              Nos guía el compromiso, la claridad y un trato cercano: sabemos que cada caso afecta la vida de quien nos confía su defensa, y así lo tomamos.
+            <p className="text-gn-stone mb-6 leading-relaxed">
+              El estudio lo integran Jorge González Novillo, socio fundador, y Matías González Novillo, socio. Debajo figuran la formación y la trayectoria de cada uno.
+            </p>
+            <p className="text-gn-stone mb-6 leading-relaxed">
+              Entendemos que detrás de cada causa hay una persona y un conflicto con más de una arista. Por eso no lo miramos solo desde el tipo penal. Cuando hace falta, coordinamos la estrategia con estudios de confianza en materia civil, comercial y laboral, de modo que la respuesta abarque el problema y no únicamente el expediente.
+            </p>
+            <p className="text-gn-stone leading-relaxed">
+              Nos guían el compromiso, la claridad y un trato cercano. Sabemos que cada causa afecta la vida de quien nos confía su defensa, y también la de quien acude como víctima, y así lo tomamos.
             </p>
           </motion.div>
 
@@ -247,7 +256,7 @@ export default function Home() {
       </section>
 
       {/* Contacto */}
-      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-gray/20" id="contacto">
+      <section className="py-24 md:py-32 bg-gn-white border-t border-gn-stone/15" id="contacto">
         <div className="max-w-screen-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -256,7 +265,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="text-gn-gray font-medium tracking-widest text-xs uppercase">Hablemos</span>
+            <span className="text-gn-gold font-medium tracking-widest text-xs uppercase">Hablemos</span>
             <h2 className="text-3xl md:text-5xl font-display text-gn-black mt-3 tracking-tight">
               Contacto
             </h2>
@@ -272,7 +281,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-gn-white border border-gn-gray/20 p-8 h-full">
+              <div className="bg-gn-white border border-gn-stone/15 p-8 h-full">
                 <h3 className="text-xl font-display text-gn-black mb-6">
                   Información de Contacto
                 </h3>
@@ -290,7 +299,7 @@ export default function Home() {
                         href="https://maps.google.com/?q=Uruguay+763,+CABA,+Argentina"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gray transition-colors"
+                        className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gold transition-colors"
                       >
                         Uruguay 763, C1013<br />CABA, Argentina
                       </a>
@@ -304,7 +313,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-gn-black mb-1">Teléfono/WhatsApp</h4>
-                      <a href="https://wa.me/message/7BQRXOHREOF4L1" target="_blank" rel="noopener noreferrer" className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gray transition-colors">
+                      <a href="https://wa.me/message/7BQRXOHREOF4L1" target="_blank" rel="noopener noreferrer" className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gold transition-colors">
                         +54 9 11 5476 3721
                       </a>
                     </div>
@@ -317,7 +326,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-gn-black mb-1">Email</h4>
-                      <a href="mailto:estudio@gonzaleznovilloabogados.com" className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gray transition-colors break-all">
+                      <a href="mailto:estudio@gonzaleznovilloabogados.com" className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gold transition-colors break-all">
                         estudio@gonzaleznovilloabogados.com
                       </a>
                     </div>
@@ -332,7 +341,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium text-gn-black mb-1">Instagram</h4>
-                      <a href="https://www.instagram.com/gonzaleznovillo_abogados/" target="_blank" rel="noopener noreferrer" className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gray transition-colors">
+                      <a href="https://www.instagram.com/gonzaleznovillo_abogados/" target="_blank" rel="noopener noreferrer" className="text-gn-black text-sm font-medium underline underline-offset-2 hover:text-gn-gold transition-colors">
                         @gonzaleznovillo_abogados
                       </a>
                     </div>

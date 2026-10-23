@@ -3,16 +3,24 @@
 @tailwind utilities;
 
 :root {
-  /* Paleta de marca GN - Manual de Marca 2026 */
-  --gn-black: #161616;
-  --gn-gray: #9D9D9C;
-  --gn-white: #F8F8F8;
-  
+  /* Paleta sobria: navy, marfil y oro apagado */
+  --gn-black: #101A2A;
+  --gn-navy: #101A2A;
+  --gn-charcoal: #1E2C40;
+  --gn-gray: #C3B6A4;
+  --gn-stone: #4A433C;
+  --gn-white: #F4EFE6;
+  --gn-ivory: #F4EFE6;
+  --gn-sand: #E8E0D2;
+  --gn-gold: #7A5E32;
+  --gn-gold-light: #D4BC8A;
+  --gn-burgundy: #6E3038;
+
   /* Semantic tokens */
-  --background: #F8F8F8;
-  --foreground: #161616;
-  --muted: #9D9D9C;
-  --accent: #161616;
+  --background: #F4EFE6;
+  --foreground: #101A2A;
+  --muted: #4A433C;
+  --accent: #7A5E32;
 }
 
 @layer base {
@@ -32,13 +40,13 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
+    @apply font-display font-medium tracking-tight;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-gn-black text-gn-white px-6 py-3 font-medium hover:bg-gn-gray transition-all duration-300;
+    @apply bg-gn-black text-gn-white px-6 py-3 font-medium hover:bg-gn-gold transition-all duration-300;
   }
 
   .btn-secondary {
@@ -46,7 +54,7 @@
   }
 
   .btn-outline {
-    @apply bg-transparent border border-gn-gray text-gn-black px-6 py-3 font-medium hover:border-gn-black transition-all duration-300;
+    @apply bg-transparent border border-gn-stone/40 text-gn-black px-6 py-3 font-medium hover:border-gn-gold transition-all duration-300;
   }
 
 
@@ -83,7 +91,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.7), rgba(22, 22, 22, 0.9));
+  background: linear-gradient(to bottom, rgba(16, 26, 42, 0.72), rgba(16, 26, 42, 0.9));
   z-index: 1;
 }
 
@@ -95,10 +103,10 @@
 /* Subtle pattern overlay */
 .hero-pattern {
   background-image:
-    linear-gradient(30deg, rgba(157, 157, 156, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(157, 157, 156, 0.03) 87.5%),
-    linear-gradient(150deg, rgba(157, 157, 156, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(157, 157, 156, 0.03) 87.5%);
-  background-size: 80px 140px;
-  background-position: 0 0, 40px 70px;
+    linear-gradient(180deg, rgba(212, 188, 138, 0.09), transparent 32%),
+    linear-gradient(rgba(244, 239, 230, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 239, 230, 0.035) 1px, transparent 1px);
+  background-size: auto, 76px 76px, 76px 76px;
 }
 
 /* Animations */
@@ -185,15 +193,16 @@
 
 /* Divider */
 .section-divider {
-  @apply w-16 h-[2px] bg-gn-black mx-auto mt-4;
+  @apply w-16 h-px bg-gn-gold mx-auto mt-4;
 }
 
 /* Focus states */
 input:focus, textarea:focus, select:focus {
-  @apply outline-none ring-1 ring-gn-black/20 border-gn-black;
+  @apply outline-none ring-1 ring-gn-gold/40 border-gn-gold;
 }
 
 /* Selection */
 ::selection {
-  background-color: rgba(22, 22, 22, 0.15);
+  background-color: rgba(122, 94, 50, 0.22);
+  color: #101A2A;
 }

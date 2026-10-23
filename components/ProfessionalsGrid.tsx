@@ -35,13 +35,17 @@ const professionals = [
       "Ayudante de Segunda en la materia \"Elementos del Derecho Penal\", de la Universidad de Buenos Aires, cátedra Slokar-Vega",
       "Ejerce de forma independiente desde 2023"
     ],
-    image: "/images/fotos/imagen-mati-cv.webp"
+    // Retrato de Matías González Novillo de pie.
+    // Archivo: public/images/fotos/matias-de-pie.jpg
+    // Si no carga, la ficha muestra las iniciales en lugar de una foto de stock.
+    image: "/images/fotos/matias-de-pie.jpg"
   }
 ];
 
 export default function ProfessionalsGrid() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
+  const [failedImages, setFailedImages] = useState<Record<number, boolean>>({});
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -72,23 +76,40 @@ export default function ProfessionalsGrid() {
           >
             <div 
               className={`bg-gn-white border overflow-hidden transition-all duration-300 cursor-pointer ${
-                isExpanded ? 'border-gn-black shadow-lg' : 'border-gn-gray/20 hover:border-gn-black'
+                isExpanded ? 'border-gn-black shadow-lg' : 'border-gn-stone/15 hover:border-gn-gold'
               }`}
               onClick={() => toggleExpand(i)}
             >
               {/* Photo container */}
-              <div className="relative aspect-[3/4] overflow-hidden bg-gn-gray/10">
-                <Image
-                  src={profesional.image}
-                  alt={profesional.altText}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  onLoad={() => handleImageLoad(i)}
-                  className={`object-cover object-top group-hover:scale-105 transition-all duration-700 ease-out ${
-                    loadedImages[i] ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
-                  }`}
-                  style={{ transitionProperty: 'opacity, transform' }}
-                />
+              <div className="relative aspect-[3/4] overflow-hidden bg-gn-sand">
+                {failedImages[i] ? (
+                  <div className="flex h-full flex-col items-center justify-center gap-2 px-6 text-center">
+                    <span className="font-display text-4xl text-gn-gold">
+                      {profesional.name
+                        .split(' ')
+                        .filter((part) => part.length > 2)
+                        .slice(0, 2)
+                        .map((part) => part[0])
+                        .join('')}
+                    </span>
+                    <span className="text-[11px] uppercase tracking-[0.16em] text-gn-stone">
+                      Foto no disponible
+                    </span>
+                  </div>
+                ) : (
+                  <Image
+                    src={profesional.image}
+                    alt={profesional.altText}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    onLoad={() => handleImageLoad(i)}
+                    onError={() => setFailedImages((prev) => ({ ...prev, [i]: true }))}
+                    className={`object-cover object-top group-hover:scale-105 transition-all duration-700 ease-out ${
+                      loadedImages[i] ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                    }`}
+                    style={{ transitionProperty: 'opacity, transform' }}
+                  />
+                )}
               </div>
 
               {/* Content */}
@@ -96,13 +117,13 @@ export default function ProfessionalsGrid() {
                 <div className="flex items-start justify-between mb-2">
                   <div>
                     <h3 className="text-lg font-display text-gn-black">{profesional.name}</h3>
-                    <p className="text-gn-gray text-sm font-medium">{profesional.role}</p>
+                    <p className="text-gn-gold text-sm font-medium">{profesional.role}</p>
                   </div>
                   <button
                     className={`p-2 transition-all duration-300 ${
                       isExpanded
                         ? 'bg-gn-black text-gn-white'
-                        : 'bg-gn-gray/10 text-gn-gray hover:bg-gn-black hover:text-gn-white'
+                        : 'bg-gn-sand text-gn-stone hover:bg-gn-black hover:text-gn-white'
                     }`}
                     onClick={(e) => {
                       e.stopPropagation();
@@ -125,9 +146,9 @@ export default function ProfessionalsGrid() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <ul className="pt-4 border-t border-gn-gray/20 mt-4 space-y-2">
+                      <ul className="pt-4 border-t border-gn-stone/15 mt-4 space-y-2">
                         {profesional.credentials.map((credential, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-sm text-gn-gray leading-relaxed">
+                          <li key={idx} className="flex items-start gap-2 text-sm text-gn-stone leading-relaxed">
                             <span className="w-1.5 h-1.5 bg-gn-black rounded-full mt-2 flex-shrink-0" />
                             <span>{credential}</span>
                           </li>

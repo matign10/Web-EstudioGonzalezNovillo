@@ -44,7 +44,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`bg-gn-white dark:bg-black fixed w-full z-20 top-0 start-0 border-b border-gn-gray/30 dark:border-gn-gray/20 transition-shadow duration-300 ${
+      className={`bg-gn-white dark:bg-black fixed w-full z-20 top-0 start-0 border-b border-gn-stone/15 dark:border-gn-gray/20 transition-shadow duration-300 ${
         isScrolled ? 'shadow-md' : ''
       }`}
     >
@@ -78,7 +78,7 @@ export default function Navbar() {
                 className={`text-sm font-medium tracking-wide transition-colors duration-300 ${
                   pathname === item.href
                     ? 'text-gn-black dark:text-gn-white'
-                    : 'text-gn-gray dark:text-gn-gray/70 hover:text-gn-black dark:hover:text-gn-white'
+                    : 'text-gn-stone dark:text-gn-gray/70 hover:text-gn-gold dark:hover:text-gn-white'
                 }`}
               >
                 {item.name}
@@ -120,7 +120,7 @@ export default function Navbar() {
       <div 
         className={`${
           isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-        } md:hidden bg-gn-white dark:bg-black border-t border-gn-gray/30 dark:border-gn-gray/20 overflow-hidden transition-all duration-300`}
+        } md:hidden bg-gn-white dark:bg-black border-t border-gn-stone/15 dark:border-gn-gray/20 overflow-hidden transition-all duration-300`}
       >
         <div className="px-4 py-4 space-y-1">
           {navigation.map((item) => (
@@ -130,8 +130,8 @@ export default function Navbar() {
               onClick={(e) => handleClick(e, item.href)}
               className={`block px-4 py-3 text-sm font-medium transition-colors duration-300 ${
                 pathname === item.href
-                  ? 'text-gn-black dark:text-gn-white bg-gn-black/5 dark:bg-gn-white/5'
-                  : 'text-gn-gray dark:text-gn-gray/70 hover:text-gn-black dark:hover:text-gn-white hover:bg-gn-black/5 dark:hover:bg-gn-white/5'
+                  ? 'text-gn-black dark:text-gn-white bg-gn-sand dark:bg-gn-white/5'
+                  : 'text-gn-stone dark:text-gn-gray/70 hover:text-gn-black dark:hover:text-gn-white hover:bg-gn-sand dark:hover:bg-gn-white/5'
               }`}
             >
               {item.name}

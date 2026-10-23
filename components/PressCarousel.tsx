@@ -82,11 +82,11 @@ export default function PressCarousel() {
               rel="noopener noreferrer nofollow"
               className="group block snap-start shrink-0 basis-[82%]"
             >
-              <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-500 hover:border-gn-black hover:shadow-lg min-h-[160px] flex flex-col">
+              <div className="h-full bg-gn-white border border-gn-stone/15 p-6 transition-all duration-500 hover:border-gn-gold hover:shadow-lg min-h-[160px] flex flex-col">
                 <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4 self-start">
                   {noticia.source}
                 </span>
-                <h3 className="text-lg font-display text-gn-black group-hover:text-gn-gray transition-colors duration-500 leading-snug flex-1">
+                <h3 className="text-lg font-display text-gn-black group-hover:text-gn-burgundy transition-colors duration-500 leading-snug flex-1">
                   {noticia.title}
                 </h3>
               </div>
@@ -101,7 +101,7 @@ export default function PressCarousel() {
               key={i}
               onClick={() => scrollToIndex(i)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i === activeIndex ? 'bg-gn-black w-6' : 'bg-gn-gray/30 hover:bg-gn-gray w-2'
+                i === activeIndex ? 'bg-gn-gold w-6' : 'bg-gn-stone/25 hover:bg-gn-stone w-2'
               }`}
               aria-label={`Ir a noticia ${i + 1}`}
             />
@@ -146,11 +146,11 @@ export default function PressCarousel() {
                 transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="group block"
               >
-                <div className="h-full bg-gn-white border border-gn-gray/20 p-6 transition-all duration-500 hover:border-gn-black hover:shadow-lg min-h-[160px] flex flex-col">
+                <div className="h-full bg-gn-white border border-gn-stone/15 p-6 transition-all duration-500 hover:border-gn-gold hover:shadow-lg min-h-[160px] flex flex-col">
                   <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide mb-4 self-start">
                     {noticia.source}
                   </span>
-                  <h3 className="text-lg font-display text-gn-black group-hover:text-gn-gray transition-colors duration-500 leading-snug flex-1">
+                  <h3 className="text-lg font-display text-gn-black group-hover:text-gn-burgundy transition-colors duration-500 leading-snug flex-1">
                     {noticia.title}
                   </h3>
                 </div>
@@ -166,7 +166,7 @@ export default function PressCarousel() {
               key={i}
               onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
               className={`h-2 rounded-full transition-all duration-500 ${
-                i === index ? 'bg-gn-black w-6' : 'bg-gn-gray/30 hover:bg-gn-gray w-2'
+                i === index ? 'bg-gn-gold w-6' : 'bg-gn-stone/25 hover:bg-gn-stone w-2'
               }`}
               aria-label={`Ir a noticia ${i + 1}`}
             />

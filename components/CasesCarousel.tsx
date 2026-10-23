@@ -154,8 +154,8 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
               onClick={() => scrollToIndex(i)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === activeIndex
-                  ? `${dark ? 'bg-gn-white' : 'bg-gn-black'} w-6`
-                  : `${dark ? 'bg-gn-white/30 hover:bg-gn-white/60' : 'bg-gn-gray/30 hover:bg-gn-gray'} w-2`
+                  ? `${dark ? 'bg-gn-gold-light' : 'bg-gn-gold'} w-6`
+                  : `${dark ? 'bg-gn-gold-light/40 hover:bg-gn-gold-light' : 'bg-gn-stone/25 hover:bg-gn-stone'} w-2`
               }`}
               aria-label={`Ir a caso ${i + 1}`}
             />
@@ -222,8 +222,8 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
               onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
               className={`h-2 rounded-full transition-all duration-500 ${
                 i === index
-                  ? `${dark ? 'bg-gn-white' : 'bg-gn-black'} w-6`
-                  : `${dark ? 'bg-gn-white/30 hover:bg-gn-white/60' : 'bg-gn-gray/30 hover:bg-gn-gray'} w-2`
+                  ? `${dark ? 'bg-gn-gold-light' : 'bg-gn-gold'} w-6`
+                  : `${dark ? 'bg-gn-gold-light/40 hover:bg-gn-gold-light' : 'bg-gn-stone/25 hover:bg-gn-stone'} w-2`
               }`}
               aria-label={`Ir a caso ${i + 1}`}
             />
@@ -236,22 +236,22 @@ export default function CasesCarousel({ dark = false }: { dark?: boolean }) {
 
 function CasoCard({ caso, hasLink }: { caso: Caso; hasLink: boolean }) {
   return (
-    <div className={`bg-gn-white border border-gn-gray/20 p-6 transition-all duration-500 h-[420px] flex flex-col overflow-hidden ${hasLink ? 'hover:border-gn-black hover:shadow-lg' : ''}`}>
+    <div className={`bg-gn-white border border-gn-stone/15 p-6 transition-all duration-500 h-[420px] flex flex-col overflow-hidden ${hasLink ? 'hover:border-gn-gold hover:shadow-lg' : ''}`}>
       <div className="flex gap-2 mb-4">
         <span className="inline-block px-3 py-1 bg-gn-black text-gn-white text-xs font-medium tracking-wide">
           {caso.tipo_resolucion}
         </span>
         {caso.tribunal && (
-          <span className="inline-block px-3 py-1 bg-gn-gray/10 text-gn-gray text-xs font-medium tracking-wide">
+          <span className="inline-block px-3 py-1 bg-gn-sand text-gn-stone text-xs font-medium tracking-wide">
             {caso.tribunal}
           </span>
         )}
       </div>
-      <h3 className={`text-lg font-display text-gn-black leading-snug mb-2 ${hasLink ? 'group-hover:text-gn-gray transition-colors duration-500' : ''}`}>
+      <h3 className={`text-lg font-display text-gn-black leading-snug mb-2 ${hasLink ? 'group-hover:text-gn-burgundy transition-colors duration-500' : ''}`}>
         {caso.titulo}
       </h3>
       {caso.descripcion && (
-        <p className="text-sm text-gn-gray leading-relaxed flex-1">
+        <p className="text-sm text-gn-stone leading-relaxed flex-1">
           {caso.descripcion}
         </p>
       )}

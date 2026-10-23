@@ -52,7 +52,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-gn-white border border-gn-gray/20 p-8 h-full">
+    <div className="bg-gn-white border border-gn-stone/15 p-8 h-full">
       <h3 className="text-xl font-display text-gn-black mb-6">
         Dejanos tu consulta
       </h3>
@@ -81,9 +81,9 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             placeholder=" "
-            className="peer w-full px-4 pt-6 pb-2 border border-gn-gray bg-white focus:outline-none focus:border-gn-black focus:ring-1 focus:ring-gn-black/20 transition-all duration-300"
+            className="peer w-full px-4 pt-6 pb-2 border border-gn-stone/30 bg-white focus:outline-none focus:border-gn-gold focus:ring-1 focus:ring-gn-gold/30 transition-all duration-300"
           />
-          <label htmlFor="nombre" className="absolute left-4 top-4 text-gn-gray transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-black peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
+          <label htmlFor="nombre" className="absolute left-4 top-4 text-gn-stone transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-gold peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
             Nombre completo *
           </label>
         </div>
@@ -97,9 +97,9 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             placeholder=" "
-            className="peer w-full px-4 pt-6 pb-2 border border-gn-gray bg-white focus:outline-none focus:border-gn-black focus:ring-1 focus:ring-gn-black/20 transition-all duration-300"
+            className="peer w-full px-4 pt-6 pb-2 border border-gn-stone/30 bg-white focus:outline-none focus:border-gn-gold focus:ring-1 focus:ring-gn-gold/30 transition-all duration-300"
           />
-          <label htmlFor="email" className="absolute left-4 top-4 text-gn-gray transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-black peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
+          <label htmlFor="email" className="absolute left-4 top-4 text-gn-stone transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-gold peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
             Email *
           </label>
         </div>
@@ -112,9 +112,9 @@ export default function ContactForm() {
             value={formData.telefono}
             onChange={handleChange}
             placeholder=" "
-            className="peer w-full px-4 pt-6 pb-2 border border-gn-gray bg-white focus:outline-none focus:border-gn-black focus:ring-1 focus:ring-gn-black/20 transition-all duration-300"
+            className="peer w-full px-4 pt-6 pb-2 border border-gn-stone/30 bg-white focus:outline-none focus:border-gn-gold focus:ring-1 focus:ring-gn-gold/30 transition-all duration-300"
           />
-          <label htmlFor="telefono" className="absolute left-4 top-4 text-gn-gray transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-black peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
+          <label htmlFor="telefono" className="absolute left-4 top-4 text-gn-stone transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-gold peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
             Teléfono
           </label>
         </div>
@@ -128,9 +128,9 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             placeholder=" "
-            className="peer w-full px-4 pt-6 pb-2 border border-gn-gray bg-white focus:outline-none focus:border-gn-black focus:ring-1 focus:ring-gn-black/20 transition-all duration-300 resize-none"
+            className="peer w-full px-4 pt-6 pb-2 border border-gn-stone/30 bg-white focus:outline-none focus:border-gn-gold focus:ring-1 focus:ring-gn-gold/30 transition-all duration-300 resize-none"
           />
-          <label htmlFor="consulta" className="absolute left-4 top-4 text-gn-gray transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-black peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
+          <label htmlFor="consulta" className="absolute left-4 top-4 text-gn-stone transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:top-2 peer-focus:text-gn-gold peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2">
             Tu consulta *
           </label>
         </div>
@@ -138,7 +138,7 @@ export default function ContactForm() {
         <motion.button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gn-black text-gn-white px-6 py-4 text-sm font-medium tracking-wide hover:bg-gn-gray transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-gn-black text-gn-white px-6 py-4 text-sm font-medium tracking-wide hover:bg-gn-gold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           whileTap={{ scale: 0.98 }}
         >
           {isSubmitting ? 'Enviando...' : 'Enviar consulta'}

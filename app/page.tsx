@@ -50,9 +50,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                Estudio{" "}
-                <span className="italic text-gn-gold-light">González</span>{" "}
-                Novillo
+                Estudio González Novillo
               </motion.h1>
               <motion.p
                 className="text-lg md:text-xl mb-10 text-gn-white/80 leading-relaxed max-w-xl"
@@ -164,56 +162,6 @@ export default function Home() {
           >
             <CasesCarousel dark />
           </motion.div>
-        </div>
-      </section>
-
-      {/*
-        PLACEHOLDERS — no reemplazar por contenido inventado.
-        Cuando el estudio envíe el material, sustituir solo los textos
-        marcados entre corchetes.
-        - Caso destacado: caso y resultado provistos por el estudio.
-        - Testimonio de cliente: cita textual provista por el estudio.
-      */}
-      <section
-        className="py-20 md:py-24 bg-gn-sand border-y border-dashed border-gn-burgundy/40"
-        id="pendientes"
-        aria-label="Bloques pendientes de contenido del estudio"
-      >
-        <div className="max-w-screen-xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <span className="text-gn-burgundy font-medium tracking-widest text-xs uppercase">Pendiente de publicación</span>
-            <h2 className="text-3xl md:text-4xl font-display text-gn-black mt-3 tracking-tight">
-              Material a completar por el estudio
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gn-stone">
-              Estos recuadros están reservados. No contienen un caso ni un testimonio reales.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <article className="border border-dashed border-gn-burgundy/60 bg-gn-white p-8">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gn-burgundy">
-                Pendiente · no es un dato real
-              </p>
-              <h3 className="mt-4 font-display text-2xl text-gn-black">Caso destacado</h3>
-              <p className="mt-4 leading-relaxed text-gn-stone">
-                [PENDIENTE: caso destacado provisto por el estudio]
-              </p>
-              <p className="mt-6 text-xs uppercase tracking-wider text-gn-stone/80">
-                Resultado: [PENDIENTE: resultado provisto por el estudio]
-              </p>
-            </article>
-
-            <article className="border border-dashed border-gn-burgundy/60 bg-gn-white p-8">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gn-burgundy">
-                Pendiente · no es un dato real
-              </p>
-              <h3 className="mt-4 font-display text-2xl text-gn-black">Testimonio de cliente</h3>
-              <blockquote className="mt-4 border-l-2 border-gn-burgundy/40 pl-4 font-display text-xl italic leading-relaxed text-gn-stone">
-                [PENDIENTE: testimonio de cliente provisto por el estudio]
-              </blockquote>
-            </article>
-          </div>
         </div>
       </section>
 

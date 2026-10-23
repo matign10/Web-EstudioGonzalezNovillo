@@ -72,7 +72,7 @@ export default function PressCarousel() {
         <div
           ref={trackRef}
           onScroll={onScroll}
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="flex touch-pan-x gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {loopNoticias.map((noticia, i) => (
             <a

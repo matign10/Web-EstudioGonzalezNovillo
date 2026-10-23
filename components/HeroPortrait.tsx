@@ -40,7 +40,7 @@ export default function HeroPortrait() {
           )}
         </div>
       </div>
-      <figcaption className="mt-3 text-center font-display text-sm italic text-gn-gold-light lg:text-right">
+      <figcaption className="mt-3 text-center font-display text-sm text-gn-gray lg:text-right">
         Jorge y Matías González Novillo
       </figcaption>
     </figure>

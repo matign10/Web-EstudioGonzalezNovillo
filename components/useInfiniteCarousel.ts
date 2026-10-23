@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect, useCallback } from 'react';
 
 /**
  * Carrusel "infinito" para mobile basado en scroll nativo con snap.
@@ -17,13 +17,30 @@ const MIDDLE = 2; // copia central (0-based) entre las 5
 const SETTLE_MS = 140;
 
 export function useInfiniteCarousel(total: number) {
-  const trackRef = useRef<HTMLDivElement>(null);
+  const nodeRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const settleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const centerToMiddle = useCallback((el: HTMLDivElement) => {
+    if (total === 0 || el.scrollWidth === 0) return;
+    el.scrollLeft = (el.scrollWidth / COPIES) * MIDDLE;
+  }, [total]);
+
+  // El track de Casos se monta después del fetch. Un effect que depende solo de
+  // `total` no vuelve a correr y el scroll queda en 0: el swipe choca con el
+  // borde. El callback centra cada vez que el nodo aparece.
+  const trackRef = useCallback((node: HTMLDivElement | null) => {
+    nodeRef.current = node;
+    if (!node) return;
+    centerToMiddle(node);
+    requestAnimationFrame(() => {
+      if (nodeRef.current === node) centerToMiddle(node);
+    });
+  }, [centerToMiddle]);
+
   // Reposiciona el scroll a la copia del medio. Solo debe llamarse en reposo.
   const recenter = useCallback(() => {
-    const el = trackRef.current;
+    const el = nodeRef.current;
     if (!el || total === 0 || el.scrollWidth === 0) return;
     const copyWidth = el.scrollWidth / COPIES;
     const offsetCopies = Math.round((el.scrollLeft - copyWidth * MIDDLE) / copyWidth);
@@ -32,12 +49,12 @@ export function useInfiniteCarousel(total: number) {
     }
   }, [total]);
 
-  // Arranca centrado en la copia del medio.
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el || total === 0 || el.scrollWidth === 0) return;
-    el.scrollLeft = (el.scrollWidth / COPIES) * MIDDLE;
-  }, [total]);
+  // Si cambia la cantidad de ítems con el track ya montado, volver al medio.
+  useLayoutEffect(() => {
+    const el = nodeRef.current;
+    if (!el) return;
+    centerToMiddle(el);
+  }, [total, centerToMiddle]);
 
   useEffect(() => {
     return () => {
@@ -46,7 +63,7 @@ export function useInfiniteCarousel(total: number) {
   }, []);
 
   const onScroll = useCallback(() => {
-    const el = trackRef.current;
+    const el = nodeRef.current;
     if (!el || total === 0 || el.scrollWidth === 0) return;
 
     const copyWidth = el.scrollWidth / COPIES;
@@ -60,7 +77,7 @@ export function useInfiniteCarousel(total: number) {
   }, [total, recenter]);
 
   const scrollToIndex = useCallback((i: number) => {
-    const el = trackRef.current;
+    const el = nodeRef.current;
     if (!el || total === 0 || el.scrollWidth === 0) return;
     const copyWidth = el.scrollWidth / COPIES;
     const cardWidth = copyWidth / total;
